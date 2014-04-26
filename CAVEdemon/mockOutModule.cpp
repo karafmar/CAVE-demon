@@ -37,7 +37,7 @@ void mockOutModule::accept(std::shared_ptr<eventMessage> e) {
    std::cout<<mockOutModule::getID()<<":::Event received - "<< e->getType()<<" type from "<<e->getDeviceId()<< " device "
             << e->getModuleId()<<" module in "<< e->getTimestamp()<<"\n";
     
-    std::lock_guard<std::mutex> lock(coreptr->insMutex);
+    //std::lock_guard<std::mutex> lock(coreptr->insMutex);
         std::shared_ptr<eventMessage> e2 = 
                 eventBuilder::buildEventMessageNotice(e->getDeviceId(),e->getModuleId());
         

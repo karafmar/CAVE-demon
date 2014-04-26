@@ -42,7 +42,7 @@ void mockInModule::accept(std::shared_ptr<eventMessage> e) {
 
 void mockInModule::sendEvents(){
     for (int i = 0; i < 10; i++) {
-        std::lock_guard<std::mutex> lock(coreptr->outsMutex);
+        //std::lock_guard<std::mutex> lock(coreptr->outsMutex);
         std::shared_ptr<eventMessage> e = 
                 eventBuilder::buildEventMessageNotice(std::to_string(i),mockInModule::getID());
         

@@ -130,6 +130,7 @@ void core::refresh() {
  * @param e incomming eventMessage
  */
 void core::sendIn(std::shared_ptr<eventMessage> e) {
+    std::lock_guard<std::mutex> lock(insMutex);
     eventIn.push(e);
     state.callInThread = true;
 }
@@ -139,6 +140,7 @@ void core::sendIn(std::shared_ptr<eventMessage> e) {
  * @param e incomming eventMessage
  */
 void core::sendOut(std::shared_ptr<eventMessage> e) {
+    std::lock_guard<std::mutex> lock(outsMutex);
     eventOut.push(e);
     state.callOutThread = true;
 }
