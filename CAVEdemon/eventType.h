@@ -13,5 +13,6 @@ enum class eventType {
 
 };
 
+
 #endif	/* EVENTTYPE_H */
 

@@ -19,7 +19,7 @@ standardInputModule::~standardInputModule() {
 standardInputModule::standardInputModule(std::shared_ptr<std::map<std::string, std::string>> map) {
     eventOut = std::queue<std::shared_ptr < eventMessage >> ();
     id = map->at("id");
-    paths = std::vector<std::string>(20);
+    paths = std::vector<std::string>(0);
     paths.push_back(map->at("devicepath"));
     devs = std::map<std::string, std::shared_ptr < device >> ();
 
@@ -69,6 +69,8 @@ void standardInputModule::accept(std::shared_ptr<eventMessage> e) {
 
 void standardInputModule::sendOut(std::shared_ptr<eventMessage> e) {
     std::lock_guard<std::mutex> lock(outsMutex);
+    
+    ////////if eventtype ==notice and closed device, call device.close() and throw it from the list.
     eventOut.push(e);
     callOutThread = true;
 

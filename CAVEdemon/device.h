@@ -17,7 +17,9 @@ public:
     device();
    
     virtual ~device();
-    void bye();
+    std::string getId();
+    void close();
+    void open();
     void acceptFeedback(std::shared_ptr<eventMessage> e);
 private:
 
