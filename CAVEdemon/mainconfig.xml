@@ -1,0 +1,51 @@
+<?xml version="1.0" standalone=no>
+<!-- comment -->
+<root>
+	<outs>
+            <module>
+                <id>out1</id>
+                <class>simplemodule</class>
+                <other>something</other>
+            </module>
+            <module>
+                <id>out2</id>
+                <class>simplemodule</class>
+                <other>something</other>
+            </module>
+            <module>
+                <id>out3</id>
+                <class>simplemodule</class>
+                <other>something</other>
+            </module>
+            <module>
+                <id>out4</id>
+                <class>mockoutmodule</class>
+                <other>something</other>
+            </module>
+
+        </outs>
+
+        <ins>
+            <module>
+                <id>in1</id>
+                <class>class</class>
+                <other>something</other>
+            </module>
+
+            <module>
+                <id>in2</id>
+                <class>simplemodule</class>
+                <other>something</other>
+            </module>
+            <module>
+                <id>mock1</id>
+                <class>mockinmodule</class>
+                <other>something</other>
+            </module>
+            <module>
+                <id>mock2</id>
+                <class>mockinmodule</class>
+                <other>something</other>
+            </module>
+        </ins>
+</root>
