@@ -16,11 +16,11 @@ public:
     eventMessageNotice();
     virtual ~eventMessageNotice();
     
-    std::string getType();
+    eventType getType();
     std::string getDeviceId();
     std::string getModuleId();
     std::time_t getTimestamp();
-    
+    std::string getTypeStr();
   
     
 private:

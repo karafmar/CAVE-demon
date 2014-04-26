@@ -10,6 +10,7 @@
 
 #include <string>
 #include <ctime>
+#include "eventType.h"
 
 class eventMessage {
 public:
@@ -17,7 +18,8 @@ public:
     eventMessage();
    // eventMessage(const event& orig);
     virtual ~eventMessage();
-    virtual std::string getType()=0;
+    virtual eventType getType()=0;
+    virtual std::string getTypeStr()=0;
     virtual std::string getDeviceId()=0;
     virtual std::string getModuleId()=0;
     virtual std::time_t getTimestamp()=0;

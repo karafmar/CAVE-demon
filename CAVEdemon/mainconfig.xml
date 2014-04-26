@@ -3,22 +3,22 @@
 <root>
 	<outs>
             <module>
-                <id>out1</id>
+                <id>sout1</id>
                 <class>simplemodule</class>
                 <other>something</other>
             </module>
             <module>
-                <id>out2</id>
+                <id>sout2</id>
                 <class>simplemodule</class>
                 <other>something</other>
             </module>
             <module>
-                <id>out3</id>
+                <id>sout3</id>
                 <class>simplemodule</class>
                 <other>something</other>
             </module>
             <module>
-                <id>out4</id>
+                <id>mockout4</id>
                 <class>mockoutmodule</class>
                 <other>something</other>
             </module>
@@ -33,17 +33,18 @@
             </module>
 
             <module>
-                <id>in2</id>
-                <class>simplemodule</class>
-                <other>something</other>
+                <id>standard</id>
+                <class>standardinputmodule</class>
+
+                <devicepath>/dev/input/event18</devicepath>
             </module>
             <module>
-                <id>mock1</id>
+                <id>mockin1</id>
                 <class>mockinmodule</class>
                 <other>something</other>
             </module>
             <module>
-                <id>mock2</id>
+                <id>mockin2</id>
                 <class>mockinmodule</class>
                 <other>something</other>
             </module>

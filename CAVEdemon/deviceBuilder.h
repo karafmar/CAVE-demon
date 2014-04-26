@@ -15,7 +15,7 @@
 class deviceBuilder {
 public:
     deviceBuilder();
-    static std::shared_ptr<device> buildDevice(std::string name);
+    static std::shared_ptr<device> buildDevice(std::string id,std::string path);
     virtual ~deviceBuilder();
 private:
 

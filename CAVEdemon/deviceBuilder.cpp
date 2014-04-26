@@ -15,7 +15,7 @@ deviceBuilder::deviceBuilder() {
 deviceBuilder::~deviceBuilder() {
 }
 
-std::shared_ptr<device> deviceBuilder::buildDevice(std::string name) {
+std::shared_ptr<device> deviceBuilder::buildDevice(std::string id,std::string path) {
     //check ze seznamu
     
     

@@ -7,6 +7,7 @@
 
 
 #include "eventMessageNotice.h"
+#include "eventType.h"
 
 eventMessageNotice::eventMessageNotice(std::string devId, std::string modId){
     deviceId=devId;
@@ -20,7 +21,11 @@ eventMessageNotice::eventMessageNotice() {
 eventMessageNotice::~eventMessageNotice() {
 }
 
-std::string eventMessageNotice::getType() {
+eventType eventMessageNotice::getType() {
+    return eventType::NOTICE;
+}
+
+std::string eventMessageNotice::getTypeStr(){
     return "notice";
 }
 

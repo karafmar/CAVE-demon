@@ -34,7 +34,7 @@ void mockOutModule::refresh(std::shared_ptr<std::map<std::string, std::string>> 
 }
 
 void mockOutModule::accept(std::shared_ptr<eventMessage> e) {
-   std::cout<<mockOutModule::getID()<<":::Event received - "<< e->getType()<<" type from "<<e->getDeviceId()<< " device "
+   std::cout<<mockOutModule::getID()<<":::Event received - "<< e->getTypeStr()<<" type from "<<e->getDeviceId()<< " device "
             << e->getModuleId()<<" module in "<< e->getTimestamp()<<"\n";
     
     //std::lock_guard<std::mutex> lock(coreptr->insMutex);

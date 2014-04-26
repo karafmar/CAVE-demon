@@ -158,7 +158,7 @@ void core::checkIns() {
                 eventIn.pop();
             }
             state.callInThread = false;
-        } else std::this_thread::sleep_for(std::chrono::milliseconds(200));
+        } else std::this_thread::sleep_for(std::chrono::milliseconds(100));
     }
 }
 
@@ -175,7 +175,7 @@ void core::checkOuts() {
                 eventOut.pop();
             }
             state.callOutThread = false;
-        } else std::this_thread::sleep_for(std::chrono::milliseconds(200));
+        } else std::this_thread::sleep_for(std::chrono::milliseconds(100));
     }
 
 }
