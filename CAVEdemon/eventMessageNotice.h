@@ -10,6 +10,7 @@
 
 #include "eventMessage.h"
 
+
 class eventMessageNotice : public eventMessage {
 public:
     eventMessageNotice(std::string devId, std::string modId);

@@ -7,7 +7,7 @@
 
 
 #include "eventMessageNotice.h"
-#include "eventType.h"
+
 
 eventMessageNotice::eventMessageNotice(std::string devId, std::string modId){
     deviceId=devId;
