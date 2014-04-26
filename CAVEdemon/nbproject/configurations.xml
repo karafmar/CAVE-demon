@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="94">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <logicalFolder name="HeaderFiles"
+                   displayName="Header Files"
+                   projectFiles="true">
+      <logicalFolder name="f1" displayName="device" projectFiles="true">
+        <itemPath>device.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f2" displayName="event" projectFiles="true">
+        <itemPath>eventMessage.h</itemPath>
+        <itemPath>eventMessageNotice.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f3" displayName="module" projectFiles="true">
+        <itemPath>mockInModule.h</itemPath>
+        <itemPath>mockOutModule.h</itemPath>
+        <itemPath>module.h</itemPath>
+        <itemPath>simpleModule.h</itemPath>
+        <itemPath>standardInputModule.h</itemPath>
+      </logicalFolder>
+      <itemPath>core.h</itemPath>
+      <itemPath>deviceBuilder.h</itemPath>
+      <itemPath>eventBuilder.h</itemPath>
+      <itemPath>moduleBuilder.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="ResourceFiles"
+                   displayName="Resource Files"
+                   projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="SourceFiles"
+                   displayName="Source Files"
+                   projectFiles="true">
+      <logicalFolder name="f3" displayName="device" projectFiles="true">
+        <itemPath>device.cpp</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f2" displayName="event" projectFiles="true">
+        <itemPath>eventMessage.cpp</itemPath>
+        <itemPath>eventMessageNotice.cpp</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f1" displayName="module" projectFiles="true">
+        <itemPath>mockInModule.cpp</itemPath>
+        <itemPath>mockOutModule.cpp</itemPath>
+        <itemPath>module.cpp</itemPath>
+        <itemPath>simpleModule.cpp</itemPath>
+        <itemPath>standardInputModule.cpp</itemPath>
+      </logicalFolder>
+      <itemPath>core.cpp</itemPath>
+      <itemPath>deviceBuilder.cpp</itemPath>
+      <itemPath>eventBuilder.cpp</itemPath>
+      <itemPath>main.cpp</itemPath>
+      <itemPath>moduleBuilder.cpp</itemPath>
+    </logicalFolder>
+    <logicalFolder name="tinyxml" displayName="tinyxml" projectFiles="true">
+      <itemPath>tinyxml/event.cpp</itemPath>
+      <itemPath>tinyxml/event.h</itemPath>
+      <itemPath>tinyxml/tinystr.cpp</itemPath>
+      <itemPath>tinyxml/tinystr.h</itemPath>
+      <itemPath>tinyxml/tinyxml.cpp</itemPath>
+      <itemPath>tinyxml/tinyxml.h</itemPath>
+      <itemPath>tinyxml/tinyxmlerror.cpp</itemPath>
+      <itemPath>tinyxml/tinyxmlparser.cpp</itemPath>
+    </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="Test Files"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <sourceRootList>
+    <Elem>../cave/tinyxml</Elem>
+    <Elem>tinyxml</Elem>
+  </sourceRootList>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Debug" type="1">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <commandlineTool>gcc</commandlineTool>
+        </cTool>
+        <ccTool>
+          <standard>8</standard>
+          <commandLine>-pthread</commandLine>
+        </ccTool>
+        <linkerTool>
+          <commandLine>-pthread</commandLine>
+        </linkerTool>
+      </compileType>
+      <item path="core.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="core.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="device.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="device.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="deviceBuilder.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="deviceBuilder.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="eventBuilder.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="eventBuilder.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="eventMessage.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="eventMessage.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="eventMessageNotice.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="eventMessageNotice.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="mockInModule.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="mockInModule.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="mockOutModule.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="mockOutModule.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="module.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="module.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="moduleBuilder.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="moduleBuilder.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="simpleModule.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="simpleModule.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="standardInputModule.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="standardInputModule.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tinyxml/event.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tinyxml/event.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tinyxml/tinystr.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tinyxml/tinystr.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tinyxml/tinyxml.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tinyxml/tinyxml.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tinyxml/tinyxmlerror.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tinyxml/tinyxmlparser.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+    </conf>
+    <conf name="Release" type="1">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+        </fortranCompilerTool>
+        <asmTool>
+          <developmentMode>5</developmentMode>
+        </asmTool>
+      </compileType>
+      <item path="core.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="core.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="device.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="device.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="deviceBuilder.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="deviceBuilder.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="eventBuilder.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="eventBuilder.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="eventMessage.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="eventMessage.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="eventMessageNotice.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="eventMessageNotice.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="mockInModule.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="mockInModule.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="mockOutModule.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="mockOutModule.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="module.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="module.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="moduleBuilder.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="moduleBuilder.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="simpleModule.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="simpleModule.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="standardInputModule.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="standardInputModule.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tinyxml/event.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tinyxml/event.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tinyxml/tinystr.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tinyxml/tinystr.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tinyxml/tinyxml.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tinyxml/tinyxml.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tinyxml/tinyxmlerror.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tinyxml/tinyxmlparser.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>
