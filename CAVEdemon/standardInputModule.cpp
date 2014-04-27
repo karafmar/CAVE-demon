@@ -31,9 +31,9 @@ standardInputModule::standardInputModule(std::shared_ptr<std::map<std::string, s
         std::shared_ptr<device> dev = deviceBuilder::buildDevice(hash, p);
         if (dev) {
             dev->out= this;
-            
-            devs[hash] = dev;
             dev->open();
+            devs[hash] = dev;
+            
         }
     }
     t = std::thread(&standardInputModule::sendEvents, this);

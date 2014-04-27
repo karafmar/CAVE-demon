@@ -25,7 +25,7 @@ public:
     void setModuleId(std::string id);
     void setDeviceId(std::string id);
     void setdata(std::string newData);
-    
+    //std::ostream& operator<<(std::ostream& os, const std::shared_ptr<eventMessageNotice>& event);
 private:
     std::string deviceId;
     std::string moduleId;

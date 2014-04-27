@@ -9,19 +9,25 @@
 #define	DEFAULTDEVICE_H
 
 #include "device.h"
+#include <chrono>   //time for sleep
+#include <thread>
 
 
 class defaultDevice : public device{
 public:
-    defaultDevice(std::string id, eventHandler eh);
+    defaultDevice(std::string id, eventHandler neweh);
     virtual ~defaultDevice();
     std::string getId();
     void close();
     void open();
     void acceptFeedback(std::shared_ptr<eventMessage> e);
-    module * out;    
+       
 private:
     std::string  id;
+    std::thread t;
+    bool endThread= false;
+    eventHandler eh;
+    void checkForEvents();
 };
 
 #endif	/* DEFAULTDEVICE_H */

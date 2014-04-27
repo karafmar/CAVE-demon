@@ -19,6 +19,10 @@ public:
     std::string getModuleId();
     std::time_t getTimestamp();
     std::string getTypeStr();
+    std::string getInputName();
+    int getNewValue();
+    void setInputName(std::string nam);
+    void setNewValue(int val);
     void setModuleId(std::string id);
     void setDeviceId(std::string id);
 
@@ -26,8 +30,12 @@ private:
     std::string deviceId;
     std::string moduleId;
     std::time_t timestamp;
-    std::string data = "";
+    
+    std::string inputName = "";
+    int newValue=0;
 };
+
+
 
 #endif	/* EVENTMESSAGEDATAUPDATE_H */
 

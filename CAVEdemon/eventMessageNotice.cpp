@@ -8,9 +8,8 @@
 
 #include "eventMessageNotice.h"
 
-
 eventMessageNotice::eventMessageNotice() {
-    timestamp = std::time(NULL); 
+    timestamp = std::time(NULL);
 }
 
 eventMessageNotice::~eventMessageNotice() {
@@ -45,9 +44,9 @@ void eventMessageNotice::setdata(std::string newData) {
 }
 
 void eventMessageNotice::setModuleId(std::string id) {
-    moduleId=id;
+    moduleId = id;
 }
 
 void eventMessageNotice::setDeviceId(std::string id) {
-    deviceId=id;
+    deviceId = id;
 }

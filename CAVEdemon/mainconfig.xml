@@ -13,11 +13,6 @@
                 <other>something</other>
             </module>
             <module>
-                <id>sout3</id>
-                <class>simplemodule</class>
-                <other>something</other>
-            </module>
-            <module>
                 <id>mockout4</id>
                 <class>mockoutmodule</class>
                 <other>something</other>
@@ -39,11 +34,6 @@
             </module>
             <module>
                 <id>mockin1</id>
-                <class>mockinmodule</class>
-                <other>something</other>
-            </module>
-            <module>
-                <id>mockin2</id>
                 <class>mockinmodule</class>
                 <other>something</other>
             </module>

@@ -40,13 +40,14 @@ void mockInModule::accept(std::shared_ptr<eventMessage> e) {
 }
 
 void mockInModule::sendEvents() {
-    for (int i = 0; i < 10; i++) {
-        std::shared_ptr<eventMessage> e =
+   /* for (int i = 0; i < 10; i++) {
+        std::shared_ptr<eventMessageNotice> e =
                 eventBuilder::buildEventMessageNotice();
         e->setDeviceId(std::to_string(i));
         e->setModuleId(mockInModule::getID());
+        e->setdata("hello");
         coreptr->sendOut(e);
         std::this_thread::sleep_for(std::chrono::milliseconds(200));
-    }
+    }*/
 
 }

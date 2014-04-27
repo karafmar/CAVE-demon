@@ -35,9 +35,25 @@ std::time_t eventMessageDataUpdate::getTimestamp() {
 }
 
 void eventMessageDataUpdate::setModuleId(std::string id) {
-    moduleId=id;
+    moduleId = id;
 }
 
 void eventMessageDataUpdate::setDeviceId(std::string id) {
-    deviceId=id;
+    deviceId = id;
+}
+
+std::string eventMessageDataUpdate::getInputName() {
+    return inputName;
+}
+
+int eventMessageDataUpdate::getNewValue() {
+    return newValue;
+}
+
+void eventMessageDataUpdate::setInputName(std::string nam) {
+    inputName=nam;
+}
+
+void eventMessageDataUpdate::setNewValue(int val) {
+    newValue=val;
 }

@@ -12,22 +12,26 @@
 
 #include <string>
 #include "eventMessage.h"
-#include "module.h"
 #include <memory>
 #include "eventHandler/EventDevice.h"
 
-using eventHandler = event::EventDevice;
+class standardInputModule;
+
+using eventHandler = std::shared_ptr<event::EventDevice>;
 
 class device {
 public:
     device();
    
     virtual ~device();
-    std::string getId();
-    void close();
-    void open();
-    void acceptFeedback(std::shared_ptr<eventMessage> e);
-    module * out; 
+    virtual std::string getId()=0;
+    virtual void close()=0;
+    virtual void open()=0;
+    virtual void acceptFeedback(std::shared_ptr<eventMessage> e)=0;
+    standardInputModule * out;
+    static std::string getCodeNameButton(uint16_t code);
+    static std::string getCodeNameRelAxis(uint16_t code);
+    static std::string getCodeNameAbsAxis(uint16_t code);
 private:
     
 };

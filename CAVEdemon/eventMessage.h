@@ -10,6 +10,8 @@
 
 #include <string>
 #include <ctime>
+#include <iostream>
+#include <memory>
 #include "eventType.h"
 
 class eventMessage {
@@ -25,10 +27,10 @@ public:
     virtual void setModuleId(std::string id)=0;
     virtual void setDeviceId(std::string id)=0;
     virtual std::time_t getTimestamp()=0;
-    
+//    virtual 
 private:
     
 };
-
+std::ostream& operator<<(std::ostream& os, const std::shared_ptr<eventMessage>& event);
 #endif	/* EVENTMESSAGE_H */
 

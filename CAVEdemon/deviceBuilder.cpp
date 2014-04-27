@@ -19,19 +19,14 @@ deviceBuilder::~deviceBuilder() {
 
 std::shared_ptr<device> deviceBuilder::buildDevice(std::string id,std::string path) {
         try {
-		event::EventDevice eventHandler(path);
-		return std::shared_ptr<defaultDevice>(new defaultDevice(id, eventHandler));
+		eventHandler eH= std::shared_ptr<event::EventDevice>(new event::EventDevice(path));
+                std::cout << "Loading default device.\n";
+		return std::shared_ptr<defaultDevice>(new defaultDevice(id, eH));
 	}
 	catch (std::exception& e) {
 		std::cerr << e.what() << "\n";
 		return nullptr;
-	}
-    
-    
-    
-    
-    
+	} 
     //std::cout << "Unknown device name, couldn't load device!\n";
-    
-   
+      
 }
