@@ -10,9 +10,6 @@
 eventMessage::eventMessage() {
 }
 
-//eventMessage::eventMessage(const event& orig) {
-//}
-
 eventMessage::~eventMessage() {
 }
 

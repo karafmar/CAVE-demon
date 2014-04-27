@@ -20,10 +20,10 @@ public:
     eventBuilder();
     virtual ~eventBuilder();
     
-    static std::shared_ptr<eventMessageNotice> buildEventMessageNotice(std::string devId, std::string modId);
-    static std::shared_ptr<eventMessageNewDevice> buildEventMessageNewDevice(std::string devId, std::string modId);
-    static std::shared_ptr<eventMessageFeedback> buildEventMessageFeedback(std::string devId, std::string modId);
-    static std::shared_ptr<eventMessageDataUpdate> buildEventMessageDataUpdate(std::string devId, std::string modId);
+    static std::shared_ptr<eventMessageNotice> buildEventMessageNotice();
+    static std::shared_ptr<eventMessageNewDevice> buildEventMessageNewDevice();
+    static std::shared_ptr<eventMessageFeedback> buildEventMessageFeedback();
+    static std::shared_ptr<eventMessageDataUpdate> buildEventMessageDataUpdate();
 
 private:
 

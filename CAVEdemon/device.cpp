@@ -10,12 +10,14 @@
 device::device() {
 }
 
-
 device::~device() {
 }
 
-void device::bye() {
+void device::close() {
 }
 
-void device::acceptFeedback(std::shared_ptr<eventMessage> e){
+void device::open() {
+}
+
+void device::acceptFeedback(std::shared_ptr<eventMessage> e) {
 }

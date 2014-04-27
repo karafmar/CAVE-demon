@@ -13,14 +13,14 @@
 class eventMessageNewDevice : public eventMessage {
 public:
     eventMessageNewDevice();
-    eventMessageNewDevice(std::string devId, std::string modId);
     virtual ~eventMessageNewDevice();
     eventType getType();
     std::string getDeviceId();
     std::string getModuleId();
     std::time_t getTimestamp();
     std::string getTypeStr();
-
+    void setModuleId(std::string id);
+    void setDeviceId(std::string id);
 
 private:
     std::string deviceId;

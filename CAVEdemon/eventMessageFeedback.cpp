@@ -8,11 +8,6 @@
 #include "eventMessageFeedback.h"
 
 eventMessageFeedback::eventMessageFeedback() {
-}
-
-eventMessageFeedback::eventMessageFeedback(std::string devId, std::string modId){
-    deviceId=devId;
-    moduleId=modId;
     timestamp=std::time(NULL);
 }
 
@@ -37,4 +32,12 @@ std::string eventMessageFeedback::getModuleId() {
 
 std::time_t eventMessageFeedback::getTimestamp() {
     return timestamp;
+}
+
+void eventMessageFeedback::setModuleId(std::string id) {
+    moduleId=id;
+}
+
+void eventMessageFeedback::setDeviceId(std::string id) {
+    deviceId=id;
 }

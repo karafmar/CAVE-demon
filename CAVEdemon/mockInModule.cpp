@@ -10,7 +10,6 @@
 #include "eventBuilder.h"
 #include <iostream>
 
-
 mockInModule::mockInModule() {
 }
 
@@ -24,31 +23,30 @@ mockInModule::~mockInModule() {
 int mockInModule::bye() {
     /* all needed for releasing this module
      */
-     t.join();
+    t.join();
     return 0;
 }
 
-
 void mockInModule::refresh(std::shared_ptr<std::map<std::string, std::string>> map) {
     t = std::thread(&mockInModule::sendEvents, this);
-   
+
 }
 
 void mockInModule::accept(std::shared_ptr<eventMessage> e) {
-    
-    std::cout<<mockInModule::getID()<<":::Event received - "<< e->getTypeStr()<<" type from "<<e->getDeviceId()<< " device "
-            << e->getModuleId()<<" module in "<< e->getTimestamp()<<"\n";
+
+    std::cout << mockInModule::getID() << ":::Event received - " << e->getTypeStr() << " type from " << e->getDeviceId() << " device "
+            << e->getModuleId() << " module in " << e->getTimestamp() << "\n";
     e.reset();
 }
 
-void mockInModule::sendEvents(){
+void mockInModule::sendEvents() {
     for (int i = 0; i < 10; i++) {
-        //std::lock_guard<std::mutex> lock(coreptr->outsMutex);
-        std::shared_ptr<eventMessage> e = 
-                eventBuilder::buildEventMessageNotice(std::to_string(i),mockInModule::getID());
-        
-        coreptr->sendOut(e)  ;
+        std::shared_ptr<eventMessage> e =
+                eventBuilder::buildEventMessageNotice();
+        e->setDeviceId(std::to_string(i));
+        e->setModuleId(mockInModule::getID());
+        coreptr->sendOut(e);
         std::this_thread::sleep_for(std::chrono::milliseconds(200));
-    }         
-       
+    }
+
 }

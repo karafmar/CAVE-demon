@@ -9,13 +9,8 @@
 #include "eventMessageNotice.h"
 
 
-eventMessageNotice::eventMessageNotice(std::string devId, std::string modId){
-    deviceId=devId;
-    moduleId=modId;
-    timestamp=std::time(NULL);
-}
-
 eventMessageNotice::eventMessageNotice() {
+    timestamp = std::time(NULL); 
 }
 
 eventMessageNotice::~eventMessageNotice() {
@@ -25,12 +20,12 @@ eventType eventMessageNotice::getType() {
     return eventType::NOTICE;
 }
 
-std::string eventMessageNotice::getTypeStr(){
+std::string eventMessageNotice::getTypeStr() {
     return "notice";
 }
 
 std::string eventMessageNotice::getDeviceId() {
-     return  deviceId;
+    return deviceId;
 }
 
 std::string eventMessageNotice::getModuleId() {
@@ -39,4 +34,20 @@ std::string eventMessageNotice::getModuleId() {
 
 std::time_t eventMessageNotice::getTimestamp() {
     return timestamp;
+}
+
+std::string eventMessageNotice::getdata() {
+    return data;
+}
+
+void eventMessageNotice::setdata(std::string newData) {
+    data = newData;
+}
+
+void eventMessageNotice::setModuleId(std::string id) {
+    moduleId=id;
+}
+
+void eventMessageNotice::setDeviceId(std::string id) {
+    deviceId=id;
 }

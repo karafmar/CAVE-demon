@@ -8,12 +8,7 @@
 #include "eventMessageDataUpdate.h"
 
 eventMessageDataUpdate::eventMessageDataUpdate() {
-}
-
-eventMessageDataUpdate::eventMessageDataUpdate(std::string devId, std::string modId){
-    deviceId=devId;
-    moduleId=modId;
-    timestamp=std::time(NULL);
+    timestamp = std::time(NULL);
 }
 
 eventMessageDataUpdate::~eventMessageDataUpdate() {
@@ -23,12 +18,12 @@ eventType eventMessageDataUpdate::getType() {
     return eventType::DATA_UPDATE;
 }
 
-std::string eventMessageDataUpdate::getTypeStr(){
+std::string eventMessageDataUpdate::getTypeStr() {
     return "update";
 }
 
 std::string eventMessageDataUpdate::getDeviceId() {
-     return  deviceId;
+    return deviceId;
 }
 
 std::string eventMessageDataUpdate::getModuleId() {
@@ -37,4 +32,12 @@ std::string eventMessageDataUpdate::getModuleId() {
 
 std::time_t eventMessageDataUpdate::getTimestamp() {
     return timestamp;
+}
+
+void eventMessageDataUpdate::setModuleId(std::string id) {
+    moduleId=id;
+}
+
+void eventMessageDataUpdate::setDeviceId(std::string id) {
+    deviceId=id;
 }

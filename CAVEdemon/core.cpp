@@ -85,7 +85,7 @@ void core::buildIn(TiXmlElement * el) {
     TiXmlElement * el2 = el->FirstChildElement();
     while (el2 != NULL) {
         auto p = std::make_pair(el2->ValueStr(), el2->GetText());
-        cout << el2->ValueStr() << "---" << el2->GetText() << "\n";
+       // cout << el2->ValueStr() << "---" << el2->GetText() << "\n";
         map->insert(p);
         el2 = el2->NextSiblingElement();
     }
@@ -106,7 +106,7 @@ void core::buildOut(TiXmlElement * el) {
     TiXmlElement * el2 = el->FirstChildElement();
     while (el2 != NULL) {
         auto p = std::make_pair(el2->ValueStr(), el2->GetText());
-        cout << el2->ValueStr() << "---" << el2->GetText() << "\n";
+      //  cout << el2->ValueStr() << "---" << el2->GetText() << "\n";
         map->insert(p);
         el2 = el2->NextSiblingElement();
     }

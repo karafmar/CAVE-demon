@@ -30,7 +30,10 @@ standardInputModule::standardInputModule(std::shared_ptr<std::map<std::string, s
         std::string hash = ss.str();
         std::shared_ptr<device> dev = deviceBuilder::buildDevice(hash, p);
         if (dev) {
+            dev->out= this;
+            
             devs[hash] = dev;
+            dev->open();
         }
     }
     t = std::thread(&standardInputModule::sendEvents, this);
@@ -44,7 +47,7 @@ standardInputModule::standardInputModule(std::shared_ptr<std::map<std::string, s
 int standardInputModule::bye() {
 
     for (auto& d : devs) {
-        d.second->bye();
+        d.second->close();
         devs.erase(d.first);
     }
     endThread = true;
@@ -69,7 +72,7 @@ void standardInputModule::accept(std::shared_ptr<eventMessage> e) {
 
 void standardInputModule::sendOut(std::shared_ptr<eventMessage> e) {
     std::lock_guard<std::mutex> lock(outsMutex);
-    
+    e->setModuleId(id);
     ////////if eventtype ==notice and closed device, call device.close() and throw it from the list.
     eventOut.push(e);
     callOutThread = true;

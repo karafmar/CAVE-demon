@@ -13,7 +13,6 @@
 
 class eventMessageNotice : public eventMessage {
 public:
-    eventMessageNotice(std::string devId, std::string modId);
     eventMessageNotice();
     virtual ~eventMessageNotice();
     
@@ -22,7 +21,10 @@ public:
     std::string getModuleId();
     std::time_t getTimestamp();
     std::string getTypeStr();
-  
+    std::string getdata();
+    void setModuleId(std::string id);
+    void setDeviceId(std::string id);
+    void setdata(std::string newData);
     
 private:
     std::string deviceId;

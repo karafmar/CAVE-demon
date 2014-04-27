@@ -9,12 +9,7 @@
 #include "eventType.h"
 
 eventMessageNewDevice::eventMessageNewDevice() {
-}
-
-eventMessageNewDevice::eventMessageNewDevice(std::string devId, std::string modId){
-    deviceId=devId;
-    moduleId=modId;
-    timestamp=std::time(NULL);
+    timestamp=std::time(NULL); 
 }
 
 eventMessageNewDevice::~eventMessageNewDevice() {
@@ -39,3 +34,12 @@ std::string eventMessageNewDevice::getModuleId() {
 std::time_t eventMessageNewDevice::getTimestamp() {
     return timestamp;
 }
+
+void eventMessageNewDevice::setModuleId(std::string id) {
+    moduleId=id;
+}
+
+void eventMessageNewDevice::setDeviceId(std::string id) {
+    deviceId=id;
+}
+

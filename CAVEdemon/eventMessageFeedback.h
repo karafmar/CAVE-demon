@@ -10,17 +10,17 @@
 
 #include "eventMessage.h"
 
-class eventMessageFeedback : public eventMessage  {
+class eventMessageFeedback : public eventMessage {
 public:
     eventMessageFeedback();
-    eventMessageFeedback(std::string devId, std::string modId);
     virtual ~eventMessageFeedback();
-   eventType getType();
+    eventType getType();
     std::string getDeviceId();
     std::string getModuleId();
     std::time_t getTimestamp();
     std::string getTypeStr();
-
+    void setModuleId(std::string id);
+    void setDeviceId(std::string id);
 
 private:
     std::string deviceId;

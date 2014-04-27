@@ -8,9 +8,15 @@
 #ifndef DEVICE_H
 #define	DEVICE_H
 
+
+
 #include <string>
 #include "eventMessage.h"
+#include "module.h"
 #include <memory>
+#include "eventHandler/EventDevice.h"
+
+using eventHandler = event::EventDevice;
 
 class device {
 public:
@@ -21,8 +27,9 @@ public:
     void close();
     void open();
     void acceptFeedback(std::shared_ptr<eventMessage> e);
+    module * out; 
 private:
-
+    
 };
 
 #endif	/* DEVICE_H */

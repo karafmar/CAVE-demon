@@ -35,8 +35,7 @@
             <module>
                 <id>standard</id>
                 <class>standardinputmodule</class>
-
-                <devicepath>/dev/input/event18</devicepath>
+                <devicepath>/dev/input/event3</devicepath>
             </module>
             <module>
                 <id>mockin1</id>
