@@ -140,14 +140,17 @@ void core::sendIn(std::shared_ptr<eventMessage> e) {
  * @param e incomming eventMessage
  */
 void core::sendOut(std::shared_ptr<eventMessage> e) {
+    //std::cout<<"coreget";
     std::lock_guard<std::mutex> lock(outsMutex);
+    
     eventOut.push(e);
+    //std::cout<<eventOut.size()<<"---in---";
     state.callOutThread = true;
 }
 
 void core::checkIns() {
     std::this_thread::sleep_for(std::chrono::milliseconds(500));
-    for (int i = 0; i < 100; i++) {
+    for (int i = 0; i < 1000; i++) {
         if (state.callInThread) {
             std::lock_guard<std::mutex> lock(insMutex);
             while (!eventIn.empty()) {
@@ -164,14 +167,17 @@ void core::checkIns() {
 
 void core::checkOuts() {
     std::this_thread::sleep_for(std::chrono::milliseconds(500));
-    for (int i = 0; i < 100; i++) {
+    for (int i = 0; i < 1000; i++) {
         if (state.callOutThread) {
+            
             std::lock_guard<std::mutex> lock(outsMutex);
+            //std::cout<<eventOut.size()<<"---out---";
             while (!eventOut.empty()) {
                 //eventMessage ev=  eventIn.front();
                 for (const auto& pair : outs) {
                     pair.second->accept(eventOut.front());
                 }
+               // std::cout<<"coreout";
                 eventOut.pop();
             }
             state.callOutThread = false;

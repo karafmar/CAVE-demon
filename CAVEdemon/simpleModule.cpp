@@ -28,7 +28,7 @@ void simpleModule::refresh(std::shared_ptr<std::map<std::string, std::string>> m
 void simpleModule::accept(std::shared_ptr<eventMessage> e) {
    /* std::cout<<simpleModule::getID()<<":::Event received - "<< e->getTypeStr()<<" type from "<<e->getDeviceId()<< " device "
             << e->getModuleId()<<" module in "<< e->getTimestamp()<<"\n";
-   */
+   */ //std::cout<<"accept";
     std::cout<<id<<":::"<< e;
     e.reset();
 }

@@ -9,6 +9,7 @@
 //#include <linux/input.h>
 #include "defaultDevice.h"
 #include <iostream>
+#include <algorithm>
 #include "eventBuilder.h"
 //#include "inputType.h"
 #include  "standardInputModule.h"
@@ -16,7 +17,13 @@
 defaultDevice::defaultDevice(std::string newid, eventHandler neweh) {
     id = newid;
     eh = neweh;
-
+    name = eh->get_name();
+    key_info_ = eh->get_supported_key();
+    abs_info_ = eh->get_supported_abs();
+    rel_info_ = eh->get_supported_rel();
+   /* std::for_each(
+            key_info_.begin(), key_info_.end(), [](int const& i) {
+                std::cout << i << std::endl;            });*/
 }
 
 defaultDevice::~defaultDevice() {
@@ -33,7 +40,7 @@ void defaultDevice::close() {
 }
 
 void defaultDevice::open() {
-    std::cout << "opening device\n";
+    // std::cout << "opening device\n";
     t = std::thread(&defaultDevice::checkForEvents, this);
 }
 
@@ -46,6 +53,7 @@ void defaultDevice::checkForEvents() {
 
     while (!endThread) {
         if (auto event = eh->wait_for_event(100)) {
+            // std::cout<<"catch";
             std::shared_ptr<eventMessageDataUpdate> e = eventBuilder::buildEventMessageDataUpdate();
             e->setDeviceId(id);
             //std::cout <<event::get_event_name(event->type);

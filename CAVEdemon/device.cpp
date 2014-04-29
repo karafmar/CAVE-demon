@@ -25,247 +25,247 @@ void device::acceptFeedback(std::shared_ptr<eventMessage> e) {
 std::string device::getCodeNameButton(uint16_t code) {
     switch (code) {
         case KEY_RESERVED:
-            return "";
+            return "KEY_RESERVED";
         case KEY_ESC:
-            return "";
+            return "KEY_ESC";
         case KEY_1:
-            return "";
+            return "KEY_1";
         case KEY_2:
-            return "";
+            return "KEY_2";
         case KEY_3:
-            return "";
+            return "KEY_3";
         case KEY_4:
-            return "";
+            return "KEY_4";
         case KEY_5:
-            return "";
+            return "KEY_5";
         case KEY_6:
-            return "";
+            return "KEY_6";
         case KEY_7:
-            return "";
+            return "KEY_7";
         case KEY_8:
-            return "";
+            return "KEY_8";
         case KEY_9:
-            return "";
+            return "KEY_9";
         case KEY_0:
-            return "";
+            return "KEY_0";
         case KEY_MINUS:
-            return "";
+            return "KEY_MINUS";
         case KEY_EQUAL:
-            return "";
+            return "KEY_EQUAL";
         case KEY_BACKSPACE:
-            return "";
+            return "KEY_BACKSPACE";
         case KEY_TAB:
-            return "";
+            return "KEY_TAB";
         case KEY_Q:
-            return "";
+            return "KEY_Q";
         case KEY_W:
-            return "";
+            return "KEY_W";
         case KEY_E:
-            return "";
+            return "KEY_E";
         case KEY_R:
-            return "";
+            return "KEY_R";
         case KEY_T:
-            return "";
+            return "KEY_T";
         case KEY_Y:
-            return "";
+            return "KEY_Y";
         case KEY_U:
-            return "";
+            return "KEY_U";
         case KEY_I:
-            return "";
+            return "KEY_I";
         case KEY_O:
-            return "";
+            return "KEY_O";
         case KEY_P:
-            return "";
+            return "KEY_P";
         case KEY_LEFTBRACE:
-            return "";
+            return "KEY_LEFTBRACE";
         case
             KEY_RIGHTBRACE :
-            return "";
+            return "KEY_RIGHTBRACE";
         case
             KEY_ENTER :
-            return "";
+            return "KEY_ENTER";
         case
             KEY_LEFTCTRL :
-            return "";
+            return "KEY_LEFTCTRL";
         case
             KEY_A :
-            return "";
+            return "KEY_A";
         case
             KEY_S :
-            return "";
+            return "KEY_S";
         case
             KEY_D :
-            return "";
+            return "KEY_D";
         case
             KEY_F :
-            return "";
+            return "KEY_F";
         case
             KEY_G :
-            return "";
+            return "KEY_G";
         case
             KEY_H :
-            return "";
+            return "KEY_H";
         case
             KEY_J :
-            return "";
+            return "KEY_J";
         case
             KEY_K :
-            return "";
+            return "KEY_K";
         case
             KEY_L :
-            return "";
+            return "KEY_L";
         case KEY_SEMICOLON:
-            return "";
+            return "KEY_EMICOLON";
         case
             KEY_APOSTROPHE :
-            return "";
+            return "KEY_APOSTROPHE";
         case
             KEY_GRAVE :
-            return "";
+            return "KEY_GRAVE";
         case
             KEY_LEFTSHIFT :
-            return "";
+            return "KEY_LEFTSHIFT";
         case
             KEY_BACKSLASH :
-            return "";
+            return "KEY_BACKSLASH";
         case
             KEY_Z :
-            return "";
+            return "KEY_Z";
         case
             KEY_X :
-            return "";
+            return "KEY_X";
         case
             KEY_C :
-            return "";
+            return "KEY_C";
         case
             KEY_V :
-            return "";
+            return "KEY_V";
         case
             KEY_B :
-            return "";
+            return "KEY_B";
         case
             KEY_N :
-            return "";
+            return "KEY_N";
         case
             KEY_M :
-            return "";
+            return "KEY_M";
         case
             KEY_COMMA :
-            return "";
+            return "KEY_COMMA";
         case
             KEY_DOT :
-            return "";
+            return "KEY_DOT";
         case
             KEY_SLASH :
-            return "";
+            return "KEY_SLASH";
         case
             KEY_RIGHTSHIFT :
-            return "";
+            return "KEY_RIGHTSHIFT";
         case
             KEY_KPASTERISK :
-            return "";
+            return "KEY_KPASTERISK";
         case
             KEY_LEFTALT :
-            return "";
+            return "KEY_LEFTALT";
         case
             KEY_SPACE :
-            return "";
+            return "KEY_SPACE";
         case
             KEY_CAPSLOCK :
-            return "";
+            return "KEY_CAPSLOCK";
         case
             KEY_F1 :
-            return "";
+            return "KEY_F1";
         case
             KEY_F2 :
-            return "";
+            return "KEY_F2";
         case
             KEY_F3 :
-            return "";
+            return "KEY_F3";
         case
             KEY_F4 :
-            return "";
+            return "KEY_F4";
         case
             KEY_F5 :
-            return "";
+            return "KEY_F5";
         case
             KEY_F6 :
-            return "";
+            return "KEY_F6";
         case
             KEY_F7 :
-            return "";
+            return "KEY_F7";
         case
             KEY_F8 :
-            return "";
+            return "KEY_F8";
         case
             KEY_F9 :
-            return "";
+            return "KEY_F9";
         case
             KEY_F10 :
-            return "";
+            return "KEY_F10";
         case
             KEY_NUMLOCK :
-            return "";
+            return "KEY_NUMLOCK";
         case
             KEY_SCROLLLOCK :
-            return "";
+            return "KEY_SCROLLLOCK";
         case
             KEY_KP7 :
-            return "";
+            return "KEY_KP7";
         case
             KEY_KP8 :
-            return "";
+            return "KEY_KP8";
         case
             KEY_KP9 :
-            return "";
+            return "KEY_KP9";
         case
             KEY_KPMINUS :
-            return "";
+            return "KEY_KPMINUS";
         case
             KEY_KP4 :
-            return "";
+            return "KEY_KP4";
         case
             KEY_KP5 :
-            return "";
+            return "KEY_KP5";
         case
             KEY_KP6 :
-            return "";
+            return "KEY_KP6";
         case
             KEY_KPPLUS :
-            return "";
+            return "KEY_KPPLUS";
         case
             KEY_KP1 :
-            return "";
+            return "KEY_KP1";
         case
             KEY_KP2 :
-            return "";
+            return "KEY_KP2";
         case
             KEY_KP3 :
-            return "";
+            return "KEY_KP3";
         case
             KEY_KP0 :
-            return "";
+            return "KEY_KP0";
         case
             KEY_KPDOT :
-            return "";
+            return "KEY_KPDOT";
         case
             KEY_ZENKAKUHANKAKU :
-            return "";
+            return "KEY_ZENKAKUHANKAKU";
         case
             KEY_102ND :
-            return "";
+            return "KEY_102ND";
         case
             KEY_F11 :
-            return "";
+            return "KEY_F11";
         case
             KEY_F12 :
-            return "";
+            return "KEY_F12";
         case
             KEY_RO :
-            return "";
+            return "KEY_RO";
         case
             KEY_KATAKANA :
-            return "";
+            return "KEY_KATAKANA";
         case
             KEY_HIRAGANA :
             return "";
@@ -684,67 +684,67 @@ std::string device::getCodeNameButton(uint16_t code) {
             //MOUSE
         case
             BTN_LEFT :
-            return "";
+            return "BTN_LEFT";
         case
             BTN_RIGHT :
-            return "";
+            return "BTN_RIGHT";
         case
             BTN_MIDDLE :
-            return "";
+            return "BTN_MIDDLE";
         case
             BTN_SIDE :
-            return "";
+            return "BTN_SIDE";
         case
             BTN_EXTRA :
-            return "";
+            return "BTN_EXTRA";
         case
             BTN_FORWARD :
-            return "";
+            return "BTN_FORWARD";
         case
             BTN_BACK :
-            return "";
+            return "BTN_BACK";
         case
             BTN_TASK :
-            return "";
+            return "BTN_TASK";
         case
             BTN_TRIGGER :
-            return "";
+            return "BTN_TRIGGER";
         case
             BTN_THUMB :
-            return "";
+            return "BTN_THUMB";
         case
             BTN_THUMB2 :
-            return "";
+            return "BTN_THUMB2";
         case
             BTN_TOP :
-            return "";
+            return "BTN_TOP";
         case
             BTN_TOP2 :
-            return "";
+            return "BTN_TOP2";
         case
             BTN_PINKIE :
-            return "";
+            return "BTN_PINKIE";
         case
             BTN_BASE :
-            return "";
+            return "BTN_BASE";
         case
             BTN_BASE2 :
-            return "";
+            return "BTN_BASE2";
         case
             BTN_BASE3 :
-            return "";
+            return "BTN_BASE3";
         case
             BTN_BASE4 :
-            return "";
+            return "BTN_BASE4";
         case
             BTN_BASE5 :
-            return "";
+            return "BTN_BASE5";
         case
             BTN_BASE6 :
-            return "";
+            return "BTN_BASE6";
         case
             BTN_DEAD :
-            return "";
+            return "BTN_DEAD";
             ///GAMEPAD
         case
             BTN_A :
@@ -795,89 +795,89 @@ std::string device::getCodeNameButton(uint16_t code) {
             // DIGI PEN
         case
             BTN_TOOL_PEN :
-            return "";
+            return "BTN_TOOL_PEN";
         case
             BTN_TOOL_RUBBER :
-            return "";
+            return "BTN_TOOL_RUBBER";
         case
             BTN_TOOL_BRUSH :
-            return "";
+            return "BTN_TOOL_BRUSH";
         case
             BTN_TOOL_PENCIL :
-            return "";
+            return "BTN_TOOL_PENCIL";
         case
             BTN_TOOL_AIRBRUSH :
-            return "";
+            return "BTN_TOOL_AIRBRUSH";
         case
             BTN_TOOL_FINGER :
-            return "";
+            return "BTN_TOOL_FINGER";
         case
             BTN_TOOL_MOUSE :
-            return "";
+            return "BTN_TOOL_MOUSE";
         case
             BTN_TOOL_LENS :
-            return "";
+            return "BTN_TOOL_LENS";
         case
             BTN_TOUCH :
-            return "";
+            return "BTN_TOUCH";
         case
             BTN_STYLUS :
-            return "";
+            return "BTN_STYLUS";
         case
             BTN_STYLUS2 :
-            return "";
+            return "BTN_STYLUS2";
         case
             BTN_TOOL_DOUBLETAP :
-            return "";
+            return "BTN_TOOL_DOUBLETAP";
         case
             BTN_TOOL_TRIPLETAP :
-            return "";
+            return "BTN_TOOL_TRIPLETAP";
             //WHEEL
         case
             BTN_GEAR_DOWN :
-            return "";
+            return "BTN_GEAR_DOWN";
         case
             BTN_GEAR_UP :
-            return "";
+            return "BTN_GEAR_UP";
         case
             KEY_OK :
-            return "";
+            return "KEY_OK";
         case
             KEY_SELECT :
-            return "";
+            return "KEY_SELECT";
         case
             KEY_GOTO :
-            return "";
+            return "KEY_GOTO";
         case
             KEY_CLEAR :
-            return "";
+            return "KEY_CLEAR";
         case
             KEY_POWER2 :
-            return "";
+            return "KEY_POWER2";
         case
             KEY_OPTION :
-            return "";
+            return "KEY_OPTION";
         case
             KEY_INFO :
-            return "";
+            return "KEY_INFO";
         case
             KEY_TIME :
-            return "";
+            return "KEY_TIME";
         case
             KEY_VENDOR :
-            return "";
+            return "KEY_VENDOR";
         case
             KEY_ARCHIVE :
-            return "";
+            return "KEY_ARCHIVE";
         case
             KEY_PROGRAM :
-            return "";
+            return "KEY_PROGRAM";
         case
             KEY_CHANNEL :
-            return "";
+            return "KEY_CHANNE";
         case
             KEY_FAVORITES :
-            return "";
+            return "KEY_FAVORITES";
         case
             KEY_EPG :
             return "";
@@ -1034,82 +1034,82 @@ std::string device::getCodeNameButton(uint16_t code) {
         case
 
             KEY_DEL_EOL :
-            return "";
+            return "KEY_DEL_EOL";
         case
             KEY_DEL_EOS :
-            return "";
+            return "KEY_DEL_EOS";
         case
             KEY_INS_LINE :
-            return "";
+            return "KEY_INS_LINE";
         case
             KEY_DEL_LINE :
-            return "";
+            return "KEY_DEL_LINE";
         case
             KEY_FN :
-            return "";
+            return "KEY_FN_";
         case
             KEY_FN_ESC :
-            return "";
+            return "KEY_FN_ESC";
         case
             KEY_FN_F1 :
-            return "";
+            return "KEY_FN_F1";
         case
             KEY_FN_F2 :
-            return "";
+            return "KEY_FN_F2";
         case
             KEY_FN_F3 :
-            return "";
+            return "KEY_FN_F3";
         case
             KEY_FN_F4 :
-            return "";
+            return "KEY_FN_F4";
         case
             KEY_FN_F5 :
-            return "";
+            return "KEY_FN_F5";
         case
             KEY_FN_F6 :
-            return "";
+            return "KEY_FN_F6";
         case
             KEY_FN_F7 :
-            return "";
+            return "KEY_FN_F7";
         case
             KEY_FN_F8 :
-            return "";
+            return "KEY_FN_F8";
         case
             KEY_FN_F9 :
-            return "";
+            return "KEY_FN_F9";
         case
             KEY_FN_F10 :
-            return "";
+            return "KEY_FN_F10";
         case
             KEY_FN_F11 :
-            return "";
+            return "KEY_FN_F11";
         case
             KEY_FN_F12 :
-            return "";
+            return "KEY_FN_F12";
         case
             KEY_FN_1 :
-            return "";
+            return "KEY_FN_1";
         case
             KEY_FN_2 :
-            return "";
+            return "KEY_FN_2";
         case
             KEY_FN_D :
-            return "";
+            return "KEY_FN_D";
         case
             KEY_FN_E :
-            return "";
+            return "KEY_FN_E";
         case
             KEY_FN_F :
-            return "";
+            return "KEY_FN_F";
         case
             KEY_FN_S :
-            return "";
+            return "KEY_FN_S";
         case
             KEY_FN_B :
-            return "";
+            return "KEY_FN_B";
         case
             KEY_MAX :
-            return "";
+            return "KEY_MAX";
         default: return "UNKNOWN";
     }
 

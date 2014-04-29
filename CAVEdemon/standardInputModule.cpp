@@ -71,6 +71,7 @@ void standardInputModule::accept(std::shared_ptr<eventMessage> e) {
 }
 
 void standardInputModule::sendOut(std::shared_ptr<eventMessage> e) {
+     //std::cout<<"modget";
     std::lock_guard<std::mutex> lock(outsMutex);
     e->setModuleId(id);
     ////////if eventtype ==notice and closed device, call device.close() and throw it from the list.
@@ -84,6 +85,7 @@ void standardInputModule::sendEvents() {
         if (callOutThread) {
             std::lock_guard<std::mutex> lock(outsMutex);
             while (!eventOut.empty()) {
+               // std::cout<<"modout";
                 coreptr->sendOut(eventOut.front());
                 eventOut.pop();
             }

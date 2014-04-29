@@ -16,6 +16,7 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <errno.h>
+#include <algorithm>
 #include <iostream>
 #include "err_codes.h"
 
@@ -144,29 +145,29 @@ EventDevice::EventDevice(std::string path)
 	}
 
 	name_ = get_device_name(fd_);
-	std::cout << "Initialized device '" << name_ << "'\n";
+	std::cout << "--Initialized device '" << name_ << "'\n";
 	supported_info_ = get_supported_events(fd_);
 
 	if (supported_info_.count(event_types::keys)) {
-		std::cout << "Key supported\n";
-		key_info_ = get_key_info(fd_);
-		std::cout << "\tNumber of supported keys: " << key_info_.size() << "\n";
+		//std::cout << "Key supported\n";
+		key_info_ = get_key_info(fd_);               
+		//std::cout << "\tNumber of supported keys: " << key_info_.size() << "\n";
 	}
 
 
 	if (supported_info_.count(event_types::absolute)) {
-		std::cout << "Absolute axis supported\n";
+		//std::cout << "Absolute axis supported\n";
 		abs_info_ = get_abs_info(fd_);
-		std::cout << "\tFound " << abs_info_.size() << " valid axis\n";
+		//std::cout << "\tFound " << abs_info_.size() << " valid axis\n";
 	}
 	if (supported_info_.count(event_types::relative)) {
-		std::cout << "Relative axis supported\n";
-		rel_info_ = get_rel_info(fd_);
-		std::cout << "\tFound " << rel_info_.size() << " valid axis\n";
+		//std::cout << "Relative axis supported\n";               
+		rel_info_ = get_rel_info(fd_);                
+		//std::cout << "\tFound " << rel_info_.size() << " valid axis\n";
 	}
 
 	if (supported_info_.count(event_types::force_feedback)) {
-		std::cout << "Force feedback supported\n";
+		//std::cout << "Force feedback supported\n";
 	}
 }
 

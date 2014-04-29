@@ -7,11 +7,7 @@
                 <class>simplemodule</class>
                 <other>something</other>
             </module>
-            <module>
-                <id>sout2</id>
-                <class>simplemodule</class>
-                <other>something</other>
-            </module>
+
             <module>
                 <id>mockout4</id>
                 <class>mockoutmodule</class>

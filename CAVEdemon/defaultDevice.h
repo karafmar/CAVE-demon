@@ -12,8 +12,7 @@
 #include <chrono>   //time for sleep
 #include <thread>
 
-
-class defaultDevice : public device{
+class defaultDevice : public device {
 public:
     defaultDevice(std::string id, eventHandler neweh);
     virtual ~defaultDevice();
@@ -21,13 +20,17 @@ public:
     void close();
     void open();
     void acceptFeedback(std::shared_ptr<eventMessage> e);
-       
+
 private:
-    std::string  id;
+    std::string id;
     std::thread t;
-    bool endThread= false;
+    std::string name;
+    bool endThread = false;
     eventHandler eh;
     void checkForEvents();
+    event::key_info_t key_info_;
+    event::abs_info_t abs_info_;
+    event::rel_info_t rel_info_;
 };
 
 #endif	/* DEFAULTDEVICE_H */
