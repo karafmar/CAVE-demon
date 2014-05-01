@@ -187,6 +187,7 @@ void core::checkOuts() {
 }
 
 void core::run() {
+    if (state.endProgram) return;
     std::thread tIn(&core::checkIns, this);
     std::thread tOut(&core::checkOuts, this);
     tIn.join();

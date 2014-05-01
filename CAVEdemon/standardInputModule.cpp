@@ -8,6 +8,7 @@
 #include "standardInputModule.h"
 #include "core.h"
 #include "deviceBuilder.h"
+#include "eventMessageNotice.h"
 #include <sstream>
 
 standardInputModule::standardInputModule() {
@@ -30,10 +31,10 @@ standardInputModule::standardInputModule(std::shared_ptr<std::map<std::string, s
         std::string hash = ss.str();
         std::shared_ptr<device> dev = deviceBuilder::buildDevice(hash, p);
         if (dev) {
-            dev->out= this;
+            dev->out = this;
             dev->open();
             devs[hash] = dev;
-            
+
         }
     }
     t = std::thread(&standardInputModule::sendEvents, this);
@@ -71,21 +72,27 @@ void standardInputModule::accept(std::shared_ptr<eventMessage> e) {
 }
 
 void standardInputModule::sendOut(std::shared_ptr<eventMessage> e) {
-     //std::cout<<"modget";
+    //std::cout<<"modget";
     std::lock_guard<std::mutex> lock(outsMutex);
     e->setModuleId(id);
-    ////////if eventtype ==notice and closed device, call device.close() and throw it from the list.
     eventOut.push(e);
     callOutThread = true;
-
 }
 
 void standardInputModule::sendEvents() {
     while (!endThread) {
         if (callOutThread) {
             std::lock_guard<std::mutex> lock(outsMutex);
-            while (!eventOut.empty()) {
-               // std::cout<<"modout";
+            while (!eventOut.empty()) {             
+                if (eventOut.front()->getType() == eventType::NOTICE) {
+                    eventMessageNotice * e2 = dynamic_cast<eventMessageNotice*> (eventOut.front().get());
+                    if (e2->getdata() == "BYE") {
+                        devs[e2->getDeviceId()]->close();
+                        std::cout << id<<"::Closing device " << e2->getDeviceId()<<"\n";
+                        devs.erase(e2->getDeviceId());
+                    }
+                }
+                // std::cout<<"modout";
                 coreptr->sendOut(eventOut.front());
                 eventOut.pop();
             }

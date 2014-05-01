@@ -16,6 +16,7 @@ std::shared_ptr<core> mcp ;
  */
 int main(int argc, char** argv) {
     mcp = std::shared_ptr<core>(new core);
+    
     mcp->run();
 
     mcp->end();
