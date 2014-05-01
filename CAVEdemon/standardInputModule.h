@@ -35,7 +35,8 @@ public:
         bool callOutThread =false;
         std::thread t;
         bool endThread= false;
-        void sendEvents();
+        void sendEvents();  
+        void makePaths(std::string s, int offset);
 };
 
 #endif	/* STANDARDINPUTMODULE_H */

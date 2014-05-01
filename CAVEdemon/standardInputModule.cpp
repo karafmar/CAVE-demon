@@ -21,9 +21,10 @@ standardInputModule::standardInputModule(std::shared_ptr<std::map<std::string, s
     eventOut = std::queue<std::shared_ptr < eventMessage >> ();
     id = map->at("id");
     paths = std::vector<std::string>(0);
-    paths.push_back(map->at("devicepath"));
-    devs = std::map<std::string, std::shared_ptr < device >> ();
 
+    makePaths(map->at("devicepath"), 0);
+
+    devs = std::map<std::string, std::shared_ptr < device >> ();
     std::hash<std::string> hash_fn;
     for (auto& p : paths) {
         std::stringstream ss;
@@ -34,11 +35,21 @@ standardInputModule::standardInputModule(std::shared_ptr<std::map<std::string, s
             dev->out = this;
             dev->open();
             devs[hash] = dev;
-
         }
     }
     t = std::thread(&standardInputModule::sendEvents, this);
+}
 
+void standardInputModule::makePaths(std::string s, int offset) {
+    std::string delimiter = ";";
+    std::string::size_type pos = s.find(delimiter,offset);
+    std::string part = s.substr(offset, pos-offset);
+    //part = part.substr(0,part.length()-1);
+    std::cout<<part<< "\n";
+    
+    paths.push_back(part);
+    std::cout<<s.length()<< "\n";
+    if ((pos+1)!=s.length()) makePaths(s,pos+1);
 }
 
 /**
@@ -83,12 +94,12 @@ void standardInputModule::sendEvents() {
     while (!endThread) {
         if (callOutThread) {
             std::lock_guard<std::mutex> lock(outsMutex);
-            while (!eventOut.empty()) {             
+            while (!eventOut.empty()) {
                 if (eventOut.front()->getType() == eventType::NOTICE) {
                     eventMessageNotice * e2 = dynamic_cast<eventMessageNotice*> (eventOut.front().get());
                     if (e2->getdata() == "BYE") {
                         devs[e2->getDeviceId()]->close();
-                        std::cout << id<<"::Closing device " << e2->getDeviceId()<<"\n";
+                        std::cout << id << "::Closing device " << e2->getDeviceId() << "\n";
                         devs.erase(e2->getDeviceId());
                     }
                 }

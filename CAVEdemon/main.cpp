@@ -15,13 +15,13 @@ std::shared_ptr<core> mcp ;
  * main
  */
 int main(int argc, char** argv) {
-    mcp = std::shared_ptr<core>(new core);
+   
     
+    
+    /*mcp = std::shared_ptr<core>(new core);   
     mcp->run();
-
     mcp->end();
-
-    cout << "Program will now end.";
+    cout << "Program will now end.";*/
     return 0;
 }
 
