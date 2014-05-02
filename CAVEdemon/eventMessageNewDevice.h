@@ -9,6 +9,8 @@
 #define	EVENTMESSAGENEWDEVICE_H
 
 #include "eventMessage.h"
+#include "ic.h"
+#include <vector>
 
 class eventMessageNewDevice : public eventMessage {
 public:
@@ -20,6 +22,8 @@ public:
     std::string getModuleId();
     std::time_t getTimestamp();
     std::string getTypeStr();
+    std::vector<std::shared_ptr<ic>> getInput();
+    void setInput(std::vector<std::shared_ptr<ic>> in);
     void setModuleId(std::string id);
     void setDeviceId(std::string id);
     void setName(std::string newname);
@@ -29,7 +33,7 @@ private:
     std::string name;
     std::string moduleId;
     std::time_t timestamp;
-    std::string data = "";
+    std::vector<std::shared_ptr<ic>> input;
 };
 #endif	/* EVENTMESSAGENEWDEVICE_H */
 

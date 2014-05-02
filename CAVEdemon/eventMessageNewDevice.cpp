@@ -8,8 +8,10 @@
 #include "eventMessageNewDevice.h"
 #include "eventType.h"
 
+
 eventMessageNewDevice::eventMessageNewDevice() {
     timestamp = std::time(NULL);
+    input = std::vector<std::shared_ptr<ic>>(0);
 }
 
 eventMessageNewDevice::~eventMessageNewDevice() {
@@ -47,6 +49,15 @@ void eventMessageNewDevice::setDeviceId(std::string id) {
     deviceId = id;
 }
 
-void eventMessageNewDevice::setName(std::string newname){
+void eventMessageNewDevice::setName(std::string newname) {
     name = newname;
 }
+
+std::vector<std::shared_ptr<ic>> eventMessageNewDevice::getInput() {
+    return input;
+}
+
+void eventMessageNewDevice::setInput(std::vector<std::shared_ptr<ic>> in){
+    input=in;
+}
+

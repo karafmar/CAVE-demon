@@ -34,9 +34,12 @@ public:
         std::mutex outsMutex;
         bool callOutThread =false;
         std::thread t;
+        std::thread checkForDevices;
         bool endThread= false;
         void sendEvents();  
         void makePaths(std::string s, int offset);
+        void loadDevices();
+        void devCheck();
 };
 
 #endif	/* STANDARDINPUTMODULE_H */

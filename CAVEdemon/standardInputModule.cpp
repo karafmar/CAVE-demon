@@ -21,35 +21,46 @@ standardInputModule::standardInputModule(std::shared_ptr<std::map<std::string, s
     eventOut = std::queue<std::shared_ptr < eventMessage >> ();
     id = map->at("id");
     paths = std::vector<std::string>(0);
-
     makePaths(map->at("devicepath"), 0);
-
     devs = std::map<std::string, std::shared_ptr < device >> ();
+
+    loadDevices();
+
+    t = std::thread(&standardInputModule::sendEvents, this);
+    //checkForDevices = std::thread(&standardInputModule::devCheck, this);
+
+}
+
+void standardInputModule::makePaths(std::string s, int offset) {
+    std::string delimiter = ";";
+    std::string::size_type pos = s.find(delimiter, offset);
+    std::string part = s.substr(offset, pos - offset);
+    paths.push_back(part);
+    if ((pos + 1) != s.length()) makePaths(s, pos + 1);
+}
+
+void standardInputModule::loadDevices() {
     std::hash<std::string> hash_fn;
     for (auto& p : paths) {
         std::stringstream ss;
         ss << hash_fn(p);
         std::string hash = ss.str();
-        std::shared_ptr<device> dev = deviceBuilder::buildDevice(hash, p);
-        if (dev) {
-            dev->out = this;
-            dev->open();
-            devs[hash] = dev;
+        if (!devs[hash]) {
+            std::shared_ptr<device> dev = deviceBuilder::buildDevice(hash, p);
+            if (dev) {
+                dev->out = this;
+                dev->open();
+                devs[hash] = dev;
+            }
         }
     }
-    t = std::thread(&standardInputModule::sendEvents, this);
 }
 
-void standardInputModule::makePaths(std::string s, int offset) {
-    std::string delimiter = ";";
-    std::string::size_type pos = s.find(delimiter,offset);
-    std::string part = s.substr(offset, pos-offset);
-    //part = part.substr(0,part.length()-1);
-    std::cout<<part<< "\n";
-    
-    paths.push_back(part);
-    std::cout<<s.length()<< "\n";
-    if ((pos+1)!=s.length()) makePaths(s,pos+1);
+void standardInputModule::devCheck() {
+ /* while (!endThread) {     
+        
+    std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+    }*/
 }
 
 /**
@@ -62,14 +73,15 @@ int standardInputModule::bye() {
         d.second->close();
         devs.erase(d.first);
     }
-    endThread = true;
+    endThread = true;    
     t.join();
+    //checkForDevices.join();
     return 0;
 }
 
 void standardInputModule::refresh(std::shared_ptr<std::map<std::string, std::string>> map) {
-
-
+    makePaths(map->at("devicepath"), 0);
+    loadDevices();
 }
 
 void standardInputModule::accept(std::shared_ptr<eventMessage> e) {

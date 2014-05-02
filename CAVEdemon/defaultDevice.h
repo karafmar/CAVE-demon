@@ -20,7 +20,7 @@ public:
     void close();
     void open();
     void acceptFeedback(std::shared_ptr<eventMessage> e);
-
+    
 private:
     std::string id;
     std::thread t;
@@ -28,6 +28,7 @@ private:
     bool endThread = false;
     eventHandler eh;
     void checkForEvents();
+    void sendHello();
     event::key_info_t key_info_;
     event::abs_info_t abs_info_;
     event::rel_info_t rel_info_;

@@ -26,7 +26,7 @@
             <module>
                 <id>standard</id>
                 <class>standardinputmodule</class>
-                <devicepath>/dev/input/event18;/dev/input/event0;</devicepath>
+                <devicepath>/dev/input/event3;/dev/input/event0;</devicepath>
             </module>
             <module>
                 <id>mockin1</id>
