@@ -17,6 +17,13 @@ deviceBuilder::deviceBuilder() {
 deviceBuilder::~deviceBuilder() {
 }
 
+
+/**
+ * Builds a new device if connected.
+ * @param id ID of new device.
+ * @param path Path to new device.
+ * @return device if successful, nullptr if unable to load device.
+ */
 std::shared_ptr<device> deviceBuilder::buildDevice(std::string id,std::string path) {
         try {
 		eventHandler eH= std::shared_ptr<event::EventDevice>(new event::EventDevice(path));

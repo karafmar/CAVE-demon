@@ -22,6 +22,11 @@ void device::open() {
 void device::acceptFeedback(std::shared_ptr<eventMessage> e) {
 }
 
+/**
+ * 
+ * @param code 
+ * @return String with name of button
+ */
 std::string device::getCodeNameButton(uint16_t code) {
     switch (code) {
         case KEY_RESERVED:
@@ -1114,7 +1119,11 @@ std::string device::getCodeNameButton(uint16_t code) {
     }
 
 }
-
+/**
+ * 
+ * @param code
+ * @return name of axis.
+ */
 std::string device::getCodeNameRelAxis(uint16_t code) {
     switch (code) {
         case REL_X:
@@ -1142,6 +1151,11 @@ std::string device::getCodeNameRelAxis(uint16_t code) {
     }
 }
 
+/**
+ * 
+ * @param code
+ * @return Name of axis.
+ */
 std::string device::getCodeNameAbsAxis(uint16_t code) {
     switch (code) {
         case ABS_X:

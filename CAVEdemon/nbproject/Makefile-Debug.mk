@@ -36,11 +36,22 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/core.o \
+	${OBJECTDIR}/defaultDevice.o \
 	${OBJECTDIR}/device.o \
 	${OBJECTDIR}/deviceBuilder.o \
 	${OBJECTDIR}/eventBuilder.o \
+	${OBJECTDIR}/eventHandler/Event.o \
+	${OBJECTDIR}/eventHandler/EventDevice.o \
+	${OBJECTDIR}/eventHandler/err_codes.o \
 	${OBJECTDIR}/eventMessage.o \
+	${OBJECTDIR}/eventMessageDataUpdate.o \
+	${OBJECTDIR}/eventMessageFeedback.o \
+	${OBJECTDIR}/eventMessageNewDevice.o \
 	${OBJECTDIR}/eventMessageNotice.o \
+	${OBJECTDIR}/ic.o \
+	${OBJECTDIR}/icAbsAxis.o \
+	${OBJECTDIR}/icButton.o \
+	${OBJECTDIR}/icRelAxis.o \
 	${OBJECTDIR}/main.o \
 	${OBJECTDIR}/mockInModule.o \
 	${OBJECTDIR}/mockOutModule.o \
@@ -84,6 +95,11 @@ ${OBJECTDIR}/core.o: core.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/core.o core.cpp
 
+${OBJECTDIR}/defaultDevice.o: defaultDevice.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/defaultDevice.o defaultDevice.cpp
+
 ${OBJECTDIR}/device.o: device.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
@@ -99,15 +115,65 @@ ${OBJECTDIR}/eventBuilder.o: eventBuilder.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/eventBuilder.o eventBuilder.cpp
 
+${OBJECTDIR}/eventHandler/Event.o: eventHandler/Event.cpp 
+	${MKDIR} -p ${OBJECTDIR}/eventHandler
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/eventHandler/Event.o eventHandler/Event.cpp
+
+${OBJECTDIR}/eventHandler/EventDevice.o: eventHandler/EventDevice.cpp 
+	${MKDIR} -p ${OBJECTDIR}/eventHandler
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/eventHandler/EventDevice.o eventHandler/EventDevice.cpp
+
+${OBJECTDIR}/eventHandler/err_codes.o: eventHandler/err_codes.cpp 
+	${MKDIR} -p ${OBJECTDIR}/eventHandler
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/eventHandler/err_codes.o eventHandler/err_codes.cpp
+
 ${OBJECTDIR}/eventMessage.o: eventMessage.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/eventMessage.o eventMessage.cpp
 
+${OBJECTDIR}/eventMessageDataUpdate.o: eventMessageDataUpdate.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/eventMessageDataUpdate.o eventMessageDataUpdate.cpp
+
+${OBJECTDIR}/eventMessageFeedback.o: eventMessageFeedback.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/eventMessageFeedback.o eventMessageFeedback.cpp
+
+${OBJECTDIR}/eventMessageNewDevice.o: eventMessageNewDevice.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/eventMessageNewDevice.o eventMessageNewDevice.cpp
+
 ${OBJECTDIR}/eventMessageNotice.o: eventMessageNotice.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/eventMessageNotice.o eventMessageNotice.cpp
+
+${OBJECTDIR}/ic.o: ic.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/ic.o ic.cpp
+
+${OBJECTDIR}/icAbsAxis.o: icAbsAxis.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/icAbsAxis.o icAbsAxis.cpp
+
+${OBJECTDIR}/icButton.o: icButton.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/icButton.o icButton.cpp
+
+${OBJECTDIR}/icRelAxis.o: icRelAxis.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/icRelAxis.o icRelAxis.cpp
 
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}

@@ -1,15 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configurationDescriptor version="94">
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <logicalFolder name="eventHandler"
+                   displayName="eventHandler"
+                   projectFiles="true">
+      <itemPath>eventHandler/Event.cpp</itemPath>
+      <itemPath>eventHandler/Event.h</itemPath>
+      <itemPath>eventHandler/EventDevice.cpp</itemPath>
+      <itemPath>eventHandler/EventDevice.h</itemPath>
+      <itemPath>eventHandler/err_codes.cpp</itemPath>
+      <itemPath>eventHandler/err_codes.h</itemPath>
+    </logicalFolder>
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
       <logicalFolder name="f1" displayName="device" projectFiles="true">
+        <itemPath>defaultDevice.h</itemPath>
         <itemPath>device.h</itemPath>
       </logicalFolder>
       <logicalFolder name="f2" displayName="event" projectFiles="true">
         <itemPath>eventMessage.h</itemPath>
+        <itemPath>eventMessageDataUpdate.h</itemPath>
+        <itemPath>eventMessageFeedback.h</itemPath>
+        <itemPath>eventMessageNewDevice.h</itemPath>
         <itemPath>eventMessageNotice.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f4" displayName="ic" projectFiles="true">
+        <itemPath>ic.h</itemPath>
+        <itemPath>icAbsAxis.h</itemPath>
+        <itemPath>icButton.h</itemPath>
+        <itemPath>icRelAxis.h</itemPath>
       </logicalFolder>
       <logicalFolder name="f3" displayName="module" projectFiles="true">
         <itemPath>mockInModule.h</itemPath>
@@ -21,6 +41,8 @@
       <itemPath>core.h</itemPath>
       <itemPath>deviceBuilder.h</itemPath>
       <itemPath>eventBuilder.h</itemPath>
+      <itemPath>eventType.h</itemPath>
+      <itemPath>inputType.h</itemPath>
       <itemPath>moduleBuilder.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
@@ -31,11 +53,21 @@
                    displayName="Source Files"
                    projectFiles="true">
       <logicalFolder name="f3" displayName="device" projectFiles="true">
+        <itemPath>defaultDevice.cpp</itemPath>
         <itemPath>device.cpp</itemPath>
       </logicalFolder>
       <logicalFolder name="f2" displayName="event" projectFiles="true">
         <itemPath>eventMessage.cpp</itemPath>
+        <itemPath>eventMessageDataUpdate.cpp</itemPath>
+        <itemPath>eventMessageFeedback.cpp</itemPath>
+        <itemPath>eventMessageNewDevice.cpp</itemPath>
         <itemPath>eventMessageNotice.cpp</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f4" displayName="ic" projectFiles="true">
+        <itemPath>ic.cpp</itemPath>
+        <itemPath>icAbsAxis.cpp</itemPath>
+        <itemPath>icButton.cpp</itemPath>
+        <itemPath>icRelAxis.cpp</itemPath>
       </logicalFolder>
       <logicalFolder name="f1" displayName="module" projectFiles="true">
         <itemPath>mockInModule.cpp</itemPath>
@@ -71,10 +103,12 @@
                    kind="IMPORTANT_FILES_FOLDER">
       <itemPath>Makefile</itemPath>
     </logicalFolder>
+    <itemPath>mainconfig.xml</itemPath>
   </logicalFolder>
   <sourceRootList>
     <Elem>../cave/tinyxml</Elem>
     <Elem>tinyxml</Elem>
+    <Elem>eventHandler</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
@@ -100,6 +134,10 @@
       </item>
       <item path="core.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="defaultDevice.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="defaultDevice.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="device.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="device.h" ex="false" tool="3" flavor2="0">
@@ -112,15 +150,61 @@
       </item>
       <item path="eventBuilder.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="eventHandler/Event.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="eventHandler/Event.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="eventHandler/EventDevice.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="eventHandler/EventDevice.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="eventHandler/err_codes.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="eventHandler/err_codes.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="eventMessage.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="eventMessage.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="eventMessageDataUpdate.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="eventMessageDataUpdate.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="eventMessageFeedback.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="eventMessageFeedback.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="eventMessageNewDevice.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="eventMessageNewDevice.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="eventMessageNotice.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="eventMessageNotice.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="eventType.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ic.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="ic.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="icAbsAxis.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="icAbsAxis.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="icButton.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="icButton.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="icRelAxis.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="icRelAxis.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="inputType.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="mainconfig.xml" ex="false" tool="3" flavor2="0">
       </item>
       <item path="mockInModule.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -187,6 +271,10 @@
       </item>
       <item path="core.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="defaultDevice.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="defaultDevice.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="device.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="device.h" ex="false" tool="3" flavor2="0">
@@ -199,15 +287,61 @@
       </item>
       <item path="eventBuilder.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="eventHandler/Event.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="eventHandler/Event.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="eventHandler/EventDevice.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="eventHandler/EventDevice.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="eventHandler/err_codes.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="eventHandler/err_codes.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="eventMessage.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="eventMessage.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="eventMessageDataUpdate.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="eventMessageDataUpdate.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="eventMessageFeedback.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="eventMessageFeedback.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="eventMessageNewDevice.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="eventMessageNewDevice.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="eventMessageNotice.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="eventMessageNotice.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="eventType.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ic.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="ic.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="icAbsAxis.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="icAbsAxis.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="icButton.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="icButton.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="icRelAxis.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="icRelAxis.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="inputType.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="mainconfig.xml" ex="false" tool="3" flavor2="0">
       </item>
       <item path="mockInModule.cpp" ex="false" tool="1" flavor2="0">
       </item>

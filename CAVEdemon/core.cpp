@@ -8,6 +8,11 @@
 #include "core.h"
 using namespace std;
 
+
+/**
+ * Basic constructor.
+ * calls loadConfig();
+ */
 core::core() {
     ins = std::map<std::string, std::shared_ptr < module >> ();
     outs = std::map<std::string, std::shared_ptr < module >> ();
@@ -21,7 +26,7 @@ core::~core() {
 }
 
 /**
- * Loads all i/o models
+ * Loads all i/o models from mainconfig.xml.
  */
 void core::loadConfig() {
     cout << "Starting load...\n";
@@ -52,7 +57,7 @@ void core::loadConfig() {
 }
 
 /**
- *disconnect all modules and sets state.theEnd false
+ *Disconnect all modules and sets state.theEnd false.
  */
 void core::end() {
     cout << "Ending program...\n";
@@ -62,7 +67,6 @@ void core::end() {
         cout << in.second->getID();
         if (conf == true) cout << "--disconnecting failed\n";
         else cout << "--disconnecting successful\n";
-        //in.second->coreptr.reset();
         ins.erase(in.first);
     }
     for (auto& out : outs) {
@@ -77,28 +81,26 @@ void core::end() {
 }
 
 /**
- * Builds a new module and saves it's poiter to ins
- * @param el element with parametres for building a module
+ * Builds a new module and saves it's poiter to ins.
+ * @param el element (TinyXML) with parametres for building a module
  */
 void core::buildIn(TiXmlElement * el) {
     std::shared_ptr<std::map < std::string, std::string>> map = std::shared_ptr<std::map < std::string, std::string >> (new std::map<std::string, std::string>());
     TiXmlElement * el2 = el->FirstChildElement();
     while (el2 != NULL) {
         auto p = std::make_pair(el2->ValueStr(), el2->GetText());
-       // cout << el2->ValueStr() << "---" << el2->GetText() << "\n";
         map->insert(p);
         el2 = el2->NextSiblingElement();
     }
-    //if (mb==nullptr) mb= moduleBuilder::getBuilder();
-    std::shared_ptr<module> mod = moduleBuilder::buildModule(map); //z atributu mapu,predat builderu.
+    std::shared_ptr<module> mod = moduleBuilder::buildModule(map); 
     if (mod) {
         mod->coreptr = this;
         ins[mod->getID()] = mod;
-    } //vytvorit objekt a ulozit na nej ukazatel
+    } 
 }
 
 /**
- * Builds a new module and saves it's poiter to ins
+ * Builds a new module and saves it's poiter to ins.
  * @param el element with parametres for building a module
  */
 void core::buildOut(TiXmlElement * el) {
@@ -106,11 +108,10 @@ void core::buildOut(TiXmlElement * el) {
     TiXmlElement * el2 = el->FirstChildElement();
     while (el2 != NULL) {
         auto p = std::make_pair(el2->ValueStr(), el2->GetText());
-      //  cout << el2->ValueStr() << "---" << el2->GetText() << "\n";
         map->insert(p);
         el2 = el2->NextSiblingElement();
     }
-    std::shared_ptr<module> mod = moduleBuilder::buildModule(map); //vytvorit objekt a ulozit na nej ukazatel
+    std::shared_ptr<module> mod = moduleBuilder::buildModule(map); 
     if (mod) {
         mod->coreptr = this;
         outs[mod->getID()] = mod;
@@ -121,12 +122,14 @@ void core::buildOut(TiXmlElement * el) {
  * calls module::refresh(map) on every module from ins and outs
  */
 void core::refresh() {
+    
     //skrz ins a out, kazdymu refresh
 
 }
 
 /**
- * Puts incomming message into eventIn
+ * Puts incomming message into eventIn.
+ * Sets  state.callInThread = true.
  * @param e incomming eventMessage
  */
 void core::sendIn(std::shared_ptr<eventMessage> e) {
@@ -136,18 +139,21 @@ void core::sendIn(std::shared_ptr<eventMessage> e) {
 }
 
 /**
- * Puts incomming message into eventOut
+ * Puts incomming message into eventOut.
+ * Sets state.callOutThread = true.
  * @param e incomming eventMessage
  */
 void core::sendOut(std::shared_ptr<eventMessage> e) {
-    //std::cout<<"coreget";
-    std::lock_guard<std::mutex> lock(outsMutex);
-    
+    std::lock_guard<std::mutex> lock(outsMutex);   
     eventOut.push(e);
-    //std::cout<<eventOut.size()<<"---in---";
     state.callOutThread = true;
 }
 
+/**
+ * Thread's function. 
+ * Sends eventMessages form eventIn to target modules. Pops event after sending. 
+ * Thread is awoken by setting state.callInThread true.
+ */
 void core::checkIns() {
     std::this_thread::sleep_for(std::chrono::milliseconds(500));
     for (int i = 0; i < 1000; i++) {
@@ -165,27 +171,31 @@ void core::checkIns() {
     }
 }
 
+/**
+ * Thread's function. 
+ * Sends eventMessages form eventOut to all output modules. Pops event after sending. 
+ * Thread is awoken by setting state.callOutThread true.
+ */
 void core::checkOuts() {
     std::this_thread::sleep_for(std::chrono::milliseconds(500));
     for (int i = 0; i < 1000; i++) {
-        if (state.callOutThread) {
-            
+        if (state.callOutThread) {            
             std::lock_guard<std::mutex> lock(outsMutex);
-            //std::cout<<eventOut.size()<<"---out---";
             while (!eventOut.empty()) {
-                //eventMessage ev=  eventIn.front();
                 for (const auto& pair : outs) {
                     pair.second->accept(eventOut.front());
                 }
-               // std::cout<<"coreout";
                 eventOut.pop();
             }
             state.callOutThread = false;
         } else std::this_thread::sleep_for(std::chrono::milliseconds(100));
     }
-
 }
 
+/**
+ * Runs threads tIn and tOut.
+ * Waits for their joining.
+ */
 void core::run() {
     if (state.endProgram) return;
     std::thread tIn(&core::checkIns, this);

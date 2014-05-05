@@ -17,8 +17,8 @@ mockInModule::~mockInModule() {
 }
 
 /**
- * Ending the module and preparing for deleting
- * @return 0 if success
+ * Ending the module and preparing for deleting.
+ * @return bool If success returns O, else 1.
  */
 int mockInModule::bye() {
     /* all needed for releasing this module
@@ -27,11 +27,19 @@ int mockInModule::bye() {
     return 0;
 }
 
+/**
+ * Refresh configuration.
+ * @param map Map with new data.
+ */
 void mockInModule::refresh(std::shared_ptr<std::map<std::string, std::string>> map) {
     t = std::thread(&mockInModule::sendEvents, this);
 
 }
 
+/**
+ * Accepts events from Core. 
+ * @param e Accepted event
+ */
 void mockInModule::accept(std::shared_ptr<eventMessage> e) {
 
     std::cout << mockInModule::getID() << ":::Event received - " << e->getTypeStr() << " type from " << e->getDeviceId() << " device "
@@ -39,6 +47,9 @@ void mockInModule::accept(std::shared_ptr<eventMessage> e) {
     e.reset();
 }
 
+/**
+ * Function of thread t for sending mock events.
+ */
 void mockInModule::sendEvents() {
    /* for (int i = 0; i < 10; i++) {
         std::shared_ptr<eventMessageNotice> e =

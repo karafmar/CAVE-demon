@@ -17,6 +17,11 @@
 #include "icRelAxis.h"
 #include "icAbsAxis.h"
 
+/**
+ * Sets devices attributes.
+ * @param newid Id of new device.
+ * @param neweh eventHandler. 
+ */
 defaultDevice::defaultDevice(std::string newid, eventHandler neweh) {
     id = newid;
     eh = neweh;
@@ -24,22 +29,7 @@ defaultDevice::defaultDevice(std::string newid, eventHandler neweh) {
     key_info_ = eh->get_supported_key();
     abs_info_ = eh->get_supported_abs();
     rel_info_ = eh->get_supported_rel();
-    /* std::for_each(
-             key_info_.begin(), key_info_.end(), [](int const& i) {
-
-                 std::cout << device::getCodeNameButton(i) << "--";            });
-     std::cout << std::endl;
-
-     for (auto& abs : abs_info_) {
-         std::cout << device::getCodeNameAbsAxis(abs.first) << "--";
-     }
-     std::cout << std::endl;
-
-
-     std::for_each(
-             rel_info_.begin(), rel_info_.end(), [](int const& i) {
-                 std::cout << device::getCodeNameRelAxis(i) << "--";            });
-     std::cout << std::endl;*/
+   
 }
 
 defaultDevice::~defaultDevice() {
@@ -50,19 +40,25 @@ std::string defaultDevice::getId() {
     return id;
 }
 
+/**
+ * Sets endThread = true and waits for t to join.
+ */
 void defaultDevice::close() {
     endThread = true;
-    t.join();
-    /* std::shared_ptr<eventMessageNotice> e = eventBuilder::buildEventMessageNotice();
-     e->setDeviceId(id);
-     e->setdata("BYE");*/
+    t.join(); 
 }
 
+/**
+ * Calls sendHello() and starts t;
+ */
 void defaultDevice::open() {
     sendHello();
     t = std::thread(&defaultDevice::checkForEvents, this);
 }
 
+/**
+ * Makes std::shared_ptr<eventMessageNewDevice> with device data and sends it to out.
+ */
 void defaultDevice::sendHello() {
     std::shared_ptr<eventMessageNewDevice> e = eventBuilder::buildEventMessageNewDevice();
     e->setDeviceId(id);
@@ -83,17 +79,25 @@ void defaultDevice::sendHello() {
     out->sendOut(e);
 }
 
+/**
+ * 
+ * @param e Feedback message.
+ */
 void defaultDevice::acceptFeedback(std::shared_ptr<eventMessage> e) {
 }
 
+/**
+ * Thread method.
+ * Iterrupts when endThread is set true.
+ * Handles events and sends eventMessages to out.
+ * If exception is thrown, sends BYE message.
+ */
 void defaultDevice::checkForEvents() {
     while (!endThread) {
         try {
             if (auto event = eh->wait_for_event(100)) {
-                // std::cout<<"catch";
                 std::shared_ptr<eventMessageDataUpdate> e = eventBuilder::buildEventMessageDataUpdate();
                 e->setDeviceId(id);
-                //std::cout <<event::get_event_name(event->type);
                 if (event::get_event_name(event->type) == "ABSOLUTE AXIS") {
                     e->setInputName(device::getCodeNameAbsAxis(event->code));
                     e->setNewValue(event->value);

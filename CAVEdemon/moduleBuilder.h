@@ -16,7 +16,6 @@ class moduleBuilder {
 public:
     moduleBuilder();
     virtual ~moduleBuilder();
-   static std::shared_ptr<moduleBuilder> getBuilder();
     static std::shared_ptr<module> buildModule(std::shared_ptr<std::map<std::string, std::string>> map);
 private:
    

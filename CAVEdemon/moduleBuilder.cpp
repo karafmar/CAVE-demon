@@ -14,21 +14,17 @@
 #include <iostream>
 #include <cstddef>
 
-
-//std::shared_ptr<moduleBuilder> mb1;
-
 moduleBuilder::moduleBuilder() {
 }
 
 moduleBuilder::~moduleBuilder() {
-    // mb1.reset();
 }
 
-std::shared_ptr<moduleBuilder> moduleBuilder::getBuilder() {
-    // if (!mb1) mb1 = std::shared_ptr<moduleBuilder>(new moduleBuilder());
-    // return mb1;
-}
-
+/**
+ * Builds a module based on information from map. 
+ * @param map Map with configuration parametres which will module receive in constructor.
+ * @return Returns std::shared_ptr<module>  or nullptr if unknown or unable to load. 
+ */
 std::shared_ptr<module> moduleBuilder::buildModule(std::shared_ptr<std::map<std::string, std::string>> map) {
     if (map->count("id") == 0 || map->count("class") == 0) {
         std::cout << "Missing module parameters, couldnt load module!\n";
