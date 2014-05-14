@@ -10,6 +10,7 @@
 #include "simpleModule.h"
 #include "mockInModule.h"
 #include "mockOutModule.h"
+#include "trackdModule.h"
 #include "standardInputModule.h"
 #include <iostream>
 #include <cstddef>
@@ -48,6 +49,14 @@ std::shared_ptr<module> moduleBuilder::buildModule(std::shared_ptr<std::map<std:
         std::cout << "Loading standardInputModule.\n";
         return std::shared_ptr<module>(new standardInputModule(map));
     }
+    if (map->at("class") == "trackdmodule") {
+        std::cout << "Loading trackdModule.\n";
+        return std::shared_ptr<module>(new trackdModule(map));
+    }
+    
+    
+    
+    
     
 
     std::cout << "Unknown module, unable to load!\n";

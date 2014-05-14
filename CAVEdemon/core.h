@@ -47,12 +47,14 @@ public:
     void sendIn(std::shared_ptr<eventMessage> e);
     void sendOut(std::shared_ptr<eventMessage> e);
     void refresh();
-    void end();
+    void end(int signal);
     void run();
     
     State state;  
     std::mutex insMutex;
     std::mutex outsMutex;
+    std::mutex inModuleMutex;
+    std::mutex outModuleMutex;
 
 private:
     std::map<std::string, std::shared_ptr<module>> ins;

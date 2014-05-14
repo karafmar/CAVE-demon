@@ -13,15 +13,14 @@
                 <class>mockoutmodule</class>
                 <other>something</other>
             </module>
-
+            <module>
+                           <id>trackd</id>
+                           <class>trackdmodule</class>
+                           <other>something</other>
+                       </module>
         </outs>
 
         <ins>
-            <module>
-                <id>in1</id>
-                <class>class</class>
-                <other>something</other>
-            </module>
 
             <module>
                 <id>standard</id>

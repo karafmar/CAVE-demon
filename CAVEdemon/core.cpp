@@ -6,8 +6,8 @@
  */
 
 #include "core.h"
-using namespace std;
 
+using namespace std;
 
 /**
  * Basic constructor.
@@ -18,7 +18,8 @@ core::core() {
     outs = std::map<std::string, std::shared_ptr < module >> ();
     eventIn = std::queue<std::shared_ptr < eventMessage >> ();
     eventOut = std::queue<std::shared_ptr < eventMessage >> ();
-
+    state.endProgram = false;
+    state.theEnd = false;
     loadConfig();
 }
 
@@ -42,6 +43,7 @@ void core::loadConfig() {
         TiXmlElement *io = root->FirstChildElement(); //outs
         TiXmlElement * el = io->FirstChildElement(); //module      
         while (el != NULL) {
+
             buildOut(el);
             el = el->NextSiblingElement();
         }
@@ -59,10 +61,11 @@ void core::loadConfig() {
 /**
  *Disconnect all modules and sets state.theEnd false.
  */
-void core::end() {
+void core::end(int signal) {
     cout << "Ending program...\n";
     bool conf = false;
     for (auto& in : ins) {
+        std::lock_guard<std::mutex> lock(inModuleMutex);
         conf = in.second->bye();
         cout << in.second->getID();
         if (conf == true) cout << "--disconnecting failed\n";
@@ -70,6 +73,7 @@ void core::end() {
         ins.erase(in.first);
     }
     for (auto& out : outs) {
+        std::lock_guard<std::mutex> lock(outModuleMutex);
         conf = out.second->bye();
         cout << out.second->getID();
         if (conf == true) cout << "--disconnecting failed\n";
@@ -78,6 +82,7 @@ void core::end() {
     }
     state.theEnd = false;
     cout << "...Disconnecting finished\n";
+    state.theEnd = true;
 }
 
 /**
@@ -92,11 +97,11 @@ void core::buildIn(TiXmlElement * el) {
         map->insert(p);
         el2 = el2->NextSiblingElement();
     }
-    std::shared_ptr<module> mod = moduleBuilder::buildModule(map); 
+    std::shared_ptr<module> mod = moduleBuilder::buildModule(map);
     if (mod) {
         mod->coreptr = this;
         ins[mod->getID()] = mod;
-    } 
+    }
 }
 
 /**
@@ -111,18 +116,22 @@ void core::buildOut(TiXmlElement * el) {
         map->insert(p);
         el2 = el2->NextSiblingElement();
     }
-    std::shared_ptr<module> mod = moduleBuilder::buildModule(map); 
-    if (mod) {
-        mod->coreptr = this;
-        outs[mod->getID()] = mod;
-    }
+    std::string newId = map->at("id");
+    ///if (outs.find(newId)) outs.at(newId)->refresh(map);
+   //else {
+        std::shared_ptr<module> mod = moduleBuilder::buildModule(map);
+        if (mod) {
+            mod->coreptr = this;
+            outs[mod->getID()] = mod;
+        }
+   // }
 }
 
 /**
  * calls module::refresh(map) on every module from ins and outs
  */
 void core::refresh() {
-    
+
     //skrz ins a out, kazdymu refresh
 
 }
@@ -144,7 +153,7 @@ void core::sendIn(std::shared_ptr<eventMessage> e) {
  * @param e incomming eventMessage
  */
 void core::sendOut(std::shared_ptr<eventMessage> e) {
-    std::lock_guard<std::mutex> lock(outsMutex);   
+    std::lock_guard<std::mutex> lock(outsMutex);
     eventOut.push(e);
     state.callOutThread = true;
 }
@@ -156,9 +165,10 @@ void core::sendOut(std::shared_ptr<eventMessage> e) {
  */
 void core::checkIns() {
     std::this_thread::sleep_for(std::chrono::milliseconds(500));
-    for (int i = 0; i < 1000; i++) {
+    while (!state.theEnd) {
         if (state.callInThread) {
             std::lock_guard<std::mutex> lock(insMutex);
+            std::lock_guard<std::mutex> lock2(inModuleMutex);
             while (!eventIn.empty()) {
                 for (const auto& pair : ins) {
                     if (pair.second->getID() == eventIn.front()->getModuleId())
@@ -178,9 +188,10 @@ void core::checkIns() {
  */
 void core::checkOuts() {
     std::this_thread::sleep_for(std::chrono::milliseconds(500));
-    for (int i = 0; i < 1000; i++) {
-        if (state.callOutThread) {            
+    while (!state.theEnd) {
+        if (state.callOutThread) {
             std::lock_guard<std::mutex> lock(outsMutex);
+            std::lock_guard<std::mutex> lock2(outModuleMutex);
             while (!eventOut.empty()) {
                 for (const auto& pair : outs) {
                     pair.second->accept(eventOut.front());
@@ -204,6 +215,4 @@ void core::run() {
     tOut.join();
 
 }
-
-
 

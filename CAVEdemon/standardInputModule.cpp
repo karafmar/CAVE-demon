@@ -56,14 +56,14 @@ void standardInputModule::loadDevices() {
         std::stringstream ss;
         ss << hash_fn(p);
         std::string hash = ss.str();
-        if (!devs[hash]) {
+       // if (!devs.[hash]) {
             std::shared_ptr<device> dev = deviceBuilder::buildDevice(hash, p);
             if (dev) {
                 dev->out = this;
                 dev->open();
                 devs[hash] = dev;
             }
-        }
+       // }
     }
 }
 

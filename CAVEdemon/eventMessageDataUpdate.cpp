@@ -57,3 +57,21 @@ void eventMessageDataUpdate::setInputName(std::string nam) {
 void eventMessageDataUpdate::setNewValue(int val) {
     newValue=val;
 }
+
+ int eventMessageDataUpdate::getInputCode(){
+     return code;
+ }
+ 
+ 
+ void eventMessageDataUpdate::setInputCode(int c){
+     code = c;
+ }
+ 
+ void eventMessageDataUpdate::setInputType(inputType input){
+     it= input;
+ }
+ 
+ 
+ inputType eventMessageDataUpdate::getInputType(){
+     return it;
+ }
