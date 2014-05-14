@@ -55,6 +55,8 @@ void core::loadConfig() {
             el = el->NextSiblingElement();
         }
     }
+    if (ins.empty())cout << "Warning: no input modules found!\n";
+    if (outs.empty())cout << "Warning: no output modules found!\n";
     cout << "... Loading finished\n";
 }
 

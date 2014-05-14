@@ -5,11 +5,15 @@
  * Created on 11. květen 2014, 20:00
  */
 
+#include <utility>  //make_pair
+#include <algorithm>    //foreach
 #include "trackdModule.h"
 #include "eventMessageNotice.h"
 #include "eventMessageDataUpdate.h"
 #include "eventMessageNewDevice.h"
 #include "inputType.h"
+#include "ic.h"
+
 
 trackdModule::trackdModule() {
 }
@@ -20,8 +24,9 @@ trackdModule::~trackdModule() {
 trackdModule::trackdModule(std::shared_ptr<std::map<std::string, std::string>> map) {
     id = map->at("id");
     callThread = false;
+    endWork=false;
     events = std::queue<std::shared_ptr < eventMessage >> ();
-    botton = std::map<int, int>();
+    button = std::map<int, int>();
     axis = std::map<int, float>();
     refresh(map);
 }
@@ -51,28 +56,35 @@ void trackdModule::applyEvents() {
             if (events.front()->getType() == eventType::NOTICE) {
                 eventMessageNotice * e = dynamic_cast<eventMessageNotice*> (events.front().get());
                 if (e->getdata() == "BYE") {
-                    botton.clear();
+                    button.clear();
                     axis.clear();
                 }
             } else if (events.front()->getType() == eventType::NEW_DEVICE) {
                 eventMessageNewDevice * e = dynamic_cast<eventMessageNewDevice*> (events.front().get());
+                std::vector<std::shared_ptr < ic>> inputs = e->getInput();
+                std::for_each(inputs.begin(), inputs.end(), [&](std::shared_ptr < ic> i) {
+                    if (i->getType() == inputType::BUTTON) {
+                        button.insert(std::make_pair(i->getCode(), 0));
+                    }
+                    if ((i->getType() == inputType::ABS_AXIS) || (i->getType() == inputType::REL_AXIS)) {
+                        button.insert(std::make_pair(i->getCode(), 0));
+                    }
+                });
+
             } else if (events.front()->getType() == eventType::DATA_UPDATE) {
                 eventMessageDataUpdate * e = dynamic_cast<eventMessageDataUpdate*> (events.front().get());
                 if (e->getInputType() == inputType::BUTTON) {
-                    e->getInputName();
-                    e->getNewValue();
+                    std::lock_guard<std::mutex> lock(buttonMutex);
+                    button.at(e->getInputCode()) = e->getNewValue();
                 }
-                if ((e->getInputType() == inputType::ABS_AXIS) || (e->getInputType() == inputType::REL_AXIS))
-                    e->getNewValue();
+                if ((e->getInputType() == inputType::ABS_AXIS) || (e->getInputType() == inputType::REL_AXIS)) {
+                    std::lock_guard<std::mutex> lock(axisMutex);
+                    axis.at(e->getInputCode()) = e->getNewValue();
+                }
             }
-
-
-
             events.pop();
-
         }
         callThread = false;
-
     }
 }
 
@@ -84,12 +96,5 @@ void trackdModule::accept(std::shared_ptr<eventMessage> e) {
     std::lock_guard<std::mutex> lock(eventMutex);
     events.push(e);
     callThread = true;
-    std::cout << id << " in " << std::time(NULL) << ":::" << e;
-    /*std::shared_ptr<eventMessage> e2 =
-            eventBuilder::buildEventMessageNotice();
-    e2->setDeviceId(e->getDeviceId());
-    e2->setModuleId(e->getModuleId());
-    coreptr->sendIn(e2);
-
-    e.reset();*/
+    std::cout << id << " in " << std::time(NULL) << ":::" << e; 
 }

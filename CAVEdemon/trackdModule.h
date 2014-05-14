@@ -29,13 +29,14 @@ public:
     }
 private:
     bool callThread;
+    bool endWork;
     void applyEvents();
     std::queue<std::shared_ptr<eventMessage>> events;
     std::string id;
     std::mutex eventMutex;
-    std::mutex buttonsMutex;
+    std::mutex buttonMutex;
     std::mutex axisMutex;
-    std::map<int, int> botton;
+    std::map<int, int> button;
     std::map<int, float> axis;
 };
 
