@@ -32,6 +32,7 @@ public:
     static std::string getCodeNameButton(uint16_t code);
     static std::string getCodeNameRelAxis(uint16_t code);
     static std::string getCodeNameAbsAxis(uint16_t code);
+    virtual void sendHello()=0;
 private:
     
 };

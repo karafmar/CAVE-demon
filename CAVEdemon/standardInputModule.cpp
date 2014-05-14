@@ -18,7 +18,7 @@ standardInputModule::~standardInputModule() {
 }
 
 /**
- * Basic constructor.
+ * Basic constructor. Calls loadDevices() ans stards t thread
  * @param map Configuration data, always has key "id" and "devicepath".
  */
 standardInputModule::standardInputModule(std::shared_ptr<std::map<std::string, std::string>> map) {
@@ -31,7 +31,6 @@ standardInputModule::standardInputModule(std::shared_ptr<std::map<std::string, s
     loadDevices();
 
     t = std::thread(&standardInputModule::sendEvents, this);
-    //checkForDevices = std::thread(&standardInputModule::devCheck, this);
 }
 
 /**
@@ -52,29 +51,21 @@ void standardInputModule::makePaths(std::string s, int offset) {
  */
 void standardInputModule::loadDevices() {
     std::hash<std::string> hash_fn;
+    std::lock_guard<std::mutex> lock(pathsMutex);
     for (auto& p : paths) {
         std::stringstream ss;
         ss << hash_fn(p);
         std::string hash = ss.str();
-       // if (!devs.[hash]) {
+        if (devs.find(hash) == devs.end()){
             std::shared_ptr<device> dev = deviceBuilder::buildDevice(hash, p);
             if (dev) {
+                std::lock_guard<std::mutex> lock(devsMutex);
                 dev->out = this;
                 dev->open();
                 devs[hash] = dev;
             }
-       // }
+        }
     }
-}
-
-/**
- * To be imlemented.
- */
-void standardInputModule::devCheck() {
- /* while (!endThread) {     
-        
-    std::this_thread::sleep_for(std::chrono::milliseconds(1000));
-    }*/
 }
 
 /**
@@ -82,14 +73,13 @@ void standardInputModule::devCheck() {
  * @return bool If success returns O, else 1.
  */
 int standardInputModule::bye() {
-
+    std::lock_guard<std::mutex> lock(devsMutex);
+    endThread = true; 
+    t.join();
     for (auto& d : devs) {
         d.second->close();
         devs.erase(d.first);
-    }
-    endThread = true;    
-    t.join();
-    //checkForDevices.join();
+    } 
     return 0;
 }
 
@@ -99,7 +89,10 @@ int standardInputModule::bye() {
  */
 void standardInputModule::refresh(std::shared_ptr<std::map<std::string, std::string>> map) {
     makePaths(map->at("devicepath"), 0);
-    loadDevices();
+    for (auto& d : devs) {
+        d.second->sendHello();
+    }
+    loadDevices();   
 }
 
 
@@ -108,6 +101,7 @@ void standardInputModule::refresh(std::shared_ptr<std::map<std::string, std::str
  * @param e EventMessage to be send to a device.
  */
 void standardInputModule::accept(std::shared_ptr<eventMessage> e) {
+    std::lock_guard<std::mutex> lock(devsMutex);
     for (auto& d : devs) {
         if (d.first == e->getDeviceId()) d.second->acceptFeedback(e);
         break;
@@ -141,6 +135,7 @@ void standardInputModule::sendEvents() {
                 if (eventOut.front()->getType() == eventType::NOTICE) {
                     eventMessageNotice * e2 = dynamic_cast<eventMessageNotice*> (eventOut.front().get());
                     if (e2->getdata() == "BYE") {
+                        std::lock_guard<std::mutex> lock(devsMutex);
                         devs[e2->getDeviceId()]->close();
                         std::cout << id << "::Closing device " << e2->getDeviceId() << "\n";
                         devs.erase(e2->getDeviceId());
@@ -151,5 +146,6 @@ void standardInputModule::sendEvents() {
             }
             callOutThread = false;
         } else std::this_thread::sleep_for(std::chrono::milliseconds(10));
+        loadDevices();
     }
 }

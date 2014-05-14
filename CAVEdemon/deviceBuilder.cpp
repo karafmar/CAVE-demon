@@ -7,6 +7,7 @@
 
 #include "deviceBuilder.h"
 #include <iostream>
+#include <fstream>
 #include <cstddef>
 #include "eventHandler/EventDevice.h"
 #include "defaultDevice.h"
@@ -25,7 +26,12 @@ deviceBuilder::~deviceBuilder() {
  * @return device if successful, nullptr if unable to load device.
  */
 std::shared_ptr<device> deviceBuilder::buildDevice(std::string id,std::string path) {
-        try {
+std::ofstream s;
+s.open(path);
+if (s.fail()){
+    return nullptr;
+}   
+   try {
 		eventHandler eH= std::shared_ptr<event::EventDevice>(new event::EventDevice(path));
                 std::cout << "Loading default device.\n";
 		return std::shared_ptr<defaultDevice>(new defaultDevice(id, eH));
@@ -34,6 +40,5 @@ std::shared_ptr<device> deviceBuilder::buildDevice(std::string id,std::string pa
 		std::cerr << e.what() << "\n";
 		return nullptr;
 	} 
-    //std::cout << "Unknown device name, couldn't load device!\n";
-      
+    //std::cout << "Unknown device name, couldn't load device!\n";     
 }

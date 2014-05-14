@@ -43,7 +43,6 @@ void core::loadConfig() {
         TiXmlElement *io = root->FirstChildElement(); //outs
         TiXmlElement * el = io->FirstChildElement(); //module      
         while (el != NULL) {
-
             buildOut(el);
             el = el->NextSiblingElement();
         }
@@ -99,10 +98,14 @@ void core::buildIn(TiXmlElement * el) {
         map->insert(p);
         el2 = el2->NextSiblingElement();
     }
-    std::shared_ptr<module> mod = moduleBuilder::buildModule(map);
-    if (mod) {
-        mod->coreptr = this;
-        ins[mod->getID()] = mod;
+    std::string newId = map->at("id");
+    if (ins.find(newId) != ins.end()) ins.at(newId)->refresh(map);
+    else {
+        std::shared_ptr<module> mod = moduleBuilder::buildModule(map);
+        if (mod) {
+            mod->coreptr = this;
+            ins[mod->getID()] = mod;
+        }
     }
 }
 
@@ -119,23 +122,21 @@ void core::buildOut(TiXmlElement * el) {
         el2 = el2->NextSiblingElement();
     }
     std::string newId = map->at("id");
-    ///if (outs.find(newId)) outs.at(newId)->refresh(map);
-   //else {
+    if (outs.find(newId) != outs.end()) outs.at(newId)->refresh(map);
+    else {
         std::shared_ptr<module> mod = moduleBuilder::buildModule(map);
         if (mod) {
             mod->coreptr = this;
             outs[mod->getID()] = mod;
         }
-   // }
+    }
 }
 
 /**
  * calls module::refresh(map) on every module from ins and outs
  */
 void core::refresh() {
-
-    //skrz ins a out, kazdymu refresh
-
+    loadConfig();
 }
 
 /**

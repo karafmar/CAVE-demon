@@ -33,6 +33,7 @@ private:
     void applyEvents();
     std::queue<std::shared_ptr<eventMessage>> events;
     std::string id;
+    std::thread t1;
     std::mutex eventMutex;
     std::mutex buttonMutex;
     std::mutex axisMutex;
