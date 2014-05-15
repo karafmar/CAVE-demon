@@ -9,6 +9,7 @@
 #define	TRACKDMODULE_H
 
 #include "module.h"
+#include "shm/trackd_common.h"
 #include <thread>
 #include <chrono>   //time for sleep
 #include <mutex>
@@ -30,6 +31,7 @@ public:
 private:
     bool callThread;
     bool endWork;
+    bool write;
     void applyEvents();
     std::queue<std::shared_ptr<eventMessage>> events;
     std::string id;
@@ -39,6 +41,8 @@ private:
     std::mutex axisMutex;
     std::map<int, int> button;
     std::map<int, float> axis;
+    void writeToSHM(trackd::TrackdControlShmBlock *control_block) ;
+    //trackd::TrackdControlShmBlock control_block;
 };
 
 #endif	/* TRACKDMODULE_H */
