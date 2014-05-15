@@ -1,6 +1,6 @@
 build/Debug/GNU-Linux-x86/eventMessage.o: eventMessage.cpp eventMessage.h \
- eventType.h eventMessageNotice.h eventMessageDataUpdate.h \
- eventMessageNewDevice.h ic.h inputType.h
+ eventType.h eventMessageNotice.h eventMessageDataUpdate.h inputType.h \
+ eventMessageNewDevice.h ic.h
 
 eventMessage.h:
 
@@ -10,8 +10,8 @@ eventMessageNotice.h:
 
 eventMessageDataUpdate.h:
 
+inputType.h:
+
 eventMessageNewDevice.h:
 
 ic.h:
-
-inputType.h:

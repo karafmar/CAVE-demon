@@ -72,6 +72,7 @@ void trackdModule::applyEvents() {
                         if (e->getdata() == "BYE") {
                             button.clear();
                             axis.clear();
+                            write = true;
                         }
                     } else if (events.front()->getType() == eventType::NEW_DEVICE) {
                         eventMessageNewDevice * e = dynamic_cast<eventMessageNewDevice*> (events.front().get());
@@ -84,8 +85,7 @@ void trackdModule::applyEvents() {
                                 axis.insert(std::make_pair(i->getCode(), 0));
                             }
                         });
-                        control_block.set_button_count(button.size());
-                        control_block.set_value_count(axis.size());
+                        
                         write = true;
                     } else if (events.front()->getType() == eventType::DATA_UPDATE) {
                         eventMessageDataUpdate * e = dynamic_cast<eventMessageDataUpdate*> (events.front().get());
@@ -118,16 +118,20 @@ void trackdModule::writeToSHM(trackd::TrackdControlShmBlock *control_block) {
     try {
         std::cout <<"I should be writing\n";
         int i=0;
-        
+        if (button.size()>31) control_block->set_button_count(32);
+        else control_block->set_button_count(button.size());
+        if (axis.size()>31) control_block->set_value_count(32);
+        control_block->set_value_count(axis.size());
          for (auto& b : button) {
-            control_block->set_button(i, b.second);
+            if (i<32) control_block->set_button(i, b.second);
              i++;
          }
         i=0;  
          for (auto& a : axis) {
-             control_block->set_value(i, a.second);
-              i++;      
+             if (i<32)control_block->set_value(i, a.second);
+              i++;
          }
+        
     } catch (std::exception& e) {
         std::clog << "Error: " << e.what() << "\n";
     }

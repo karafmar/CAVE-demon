@@ -13,6 +13,7 @@
                 <sourceRootElem>../cave/tinyxml</sourceRootElem>
                 <sourceRootElem>tinyxml</sourceRootElem>
                 <sourceRootElem>eventHandler</sourceRootElem>
+                <sourceRootElem>shm</sourceRootElem>
             </sourceRootList>
             <confList>
                 <confElem>

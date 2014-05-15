@@ -57,13 +57,16 @@ OBJECTFILES= \
 	${OBJECTDIR}/mockOutModule.o \
 	${OBJECTDIR}/module.o \
 	${OBJECTDIR}/moduleBuilder.o \
+	${OBJECTDIR}/shm/shm_common.o \
+	${OBJECTDIR}/shm/trackd_common.o \
 	${OBJECTDIR}/simpleModule.o \
 	${OBJECTDIR}/standardInputModule.o \
 	${OBJECTDIR}/tinyxml/event.o \
 	${OBJECTDIR}/tinyxml/tinystr.o \
 	${OBJECTDIR}/tinyxml/tinyxml.o \
 	${OBJECTDIR}/tinyxml/tinyxmlerror.o \
-	${OBJECTDIR}/tinyxml/tinyxmlparser.o
+	${OBJECTDIR}/tinyxml/tinyxmlparser.o \
+	${OBJECTDIR}/trackdModule.o
 
 
 # C Compiler Flags
@@ -200,6 +203,16 @@ ${OBJECTDIR}/moduleBuilder.o: moduleBuilder.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/moduleBuilder.o moduleBuilder.cpp
 
+${OBJECTDIR}/shm/shm_common.o: shm/shm_common.cpp 
+	${MKDIR} -p ${OBJECTDIR}/shm
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/shm/shm_common.o shm/shm_common.cpp
+
+${OBJECTDIR}/shm/trackd_common.o: shm/trackd_common.cpp 
+	${MKDIR} -p ${OBJECTDIR}/shm
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/shm/trackd_common.o shm/trackd_common.cpp
+
 ${OBJECTDIR}/simpleModule.o: simpleModule.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
@@ -234,6 +247,11 @@ ${OBJECTDIR}/tinyxml/tinyxmlparser.o: tinyxml/tinyxmlparser.cpp
 	${MKDIR} -p ${OBJECTDIR}/tinyxml
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/tinyxml/tinyxmlparser.o tinyxml/tinyxmlparser.cpp
+
+${OBJECTDIR}/trackdModule.o: trackdModule.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/trackdModule.o trackdModule.cpp
 
 # Subprojects
 .build-subprojects:
