@@ -8,7 +8,7 @@
 #include "eventMessageDataUpdate.h"
 
 eventMessageDataUpdate::eventMessageDataUpdate() {
-    timestamp = std::time(NULL);
+     timestamp = std::chrono::high_resolution_clock::now();
 }
 
 eventMessageDataUpdate::~eventMessageDataUpdate() {
@@ -30,7 +30,7 @@ std::string eventMessageDataUpdate::getModuleId() {
     return moduleId;
 }
 
-std::time_t eventMessageDataUpdate::getTimestamp() {
+std::chrono::system_clock::time_point eventMessageDataUpdate::getTimestamp() {
     return timestamp;
 }
 

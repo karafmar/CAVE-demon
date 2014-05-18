@@ -13,6 +13,7 @@
 #include "eventMessageNewDevice.h"
 #include "inputType.h"
 #include "ic.h"
+#include "icAbsAxis.h"
 
 trackdModule::trackdModule() {
 }
@@ -81,11 +82,15 @@ void trackdModule::applyEvents() {
                             if (i->getType() == inputType::BUTTON) {
                                 button.insert(std::make_pair(i->getCode(), 0));
                             }
-                            if ((i->getType() == inputType::ABS_AXIS) || (i->getType() == inputType::REL_AXIS)) {
+                            if (i->getType() == inputType::REL_AXIS)
                                 axis.insert(std::make_pair(i->getCode(), 0));
+
+                            if (i->getType() == inputType::ABS_AXIS) {
+                                icAbsAxis * iabs = dynamic_cast<icAbsAxis*> (i.get());                                                                
+                                axis.insert(std::make_pair(iabs->getCode(), (iabs->getMax()-iabs->getMin())*0.5f));
                             }
                         });
-                        
+
                         write = true;
                     } else if (events.front()->getType() == eventType::DATA_UPDATE) {
                         eventMessageDataUpdate * e = dynamic_cast<eventMessageDataUpdate*> (events.front().get());
@@ -116,22 +121,22 @@ void trackdModule::applyEvents() {
 
 void trackdModule::writeToSHM(trackd::TrackdControlShmBlock *control_block) {
     try {
-        std::cout <<"I should be writing\n";
-        int i=0;
-        if (button.size()>31) control_block->set_button_count(32);
+        std::cout << "I should be writing\n";
+        int i = 0;
+        if (button.size() > 31) control_block->set_button_count(32);
         else control_block->set_button_count(button.size());
-        if (axis.size()>31) control_block->set_value_count(32);
+        if (axis.size() > 31) control_block->set_value_count(32);
         control_block->set_value_count(axis.size());
-         for (auto& b : button) {
-            if (i<32) control_block->set_button(i, b.second);
-             i++;
-         }
-        i=0;  
-         for (auto& a : axis) {
-             if (i<32)control_block->set_value(i, a.second);
-              i++;
-         }
-        
+        for (auto& b : button) {
+            if (i < 32) control_block->set_button(i, b.second);
+            i++;
+        }
+        i = 0;
+        for (auto& a : axis) {
+            if (i < 32)control_block->set_value(i, a.second);
+            i++;
+        }
+
     } catch (std::exception& e) {
         std::clog << "Error: " << e.what() << "\n";
     }

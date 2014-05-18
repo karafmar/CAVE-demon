@@ -10,7 +10,8 @@
 
 
 eventMessageNewDevice::eventMessageNewDevice() {
-    timestamp = std::time(NULL);
+    //timestamp = std::chrono::time_point_cast<std::chrono::microseconds>(std::chrono::high_resolution_clock::now());
+    timestamp = std::chrono::system_clock::now();
     input = std::vector<std::shared_ptr<ic>>(0);
 }
 
@@ -33,7 +34,7 @@ std::string eventMessageNewDevice::getModuleId() {
     return moduleId;
 }
 
-std::time_t eventMessageNewDevice::getTimestamp() {
+std::chrono::system_clock::time_point eventMessageNewDevice::getTimestamp() {
     return timestamp;
 }
 

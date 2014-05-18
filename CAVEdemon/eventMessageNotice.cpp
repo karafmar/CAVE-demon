@@ -9,7 +9,7 @@
 #include "eventMessageNotice.h"
 
 eventMessageNotice::eventMessageNotice() {
-    timestamp = std::time(NULL);
+    timestamp = std::chrono::high_resolution_clock::now();
 }
 
 eventMessageNotice::~eventMessageNotice() {
@@ -31,7 +31,7 @@ std::string eventMessageNotice::getModuleId() {
     return moduleId;
 }
 
-std::time_t eventMessageNotice::getTimestamp() {
+std::chrono::system_clock::time_point eventMessageNotice::getTimestamp() {
     return timestamp;
 }
 

@@ -1,10 +1,10 @@
-/* 
- * File:   standardInputModule.h
- * Author: marketa
- *
- * Created on 25. duben 2014, 13:10
+/*!
+ * @file   standardInputModule.h
+ * @author: Marketa Karaffova <karafmar@cvut.cz>
+ * @date 25. 4. 2014	
+ * @copyright	Institute of Intermedia, CTU in Prague, 2013
+ * 				Distributed under BSD Licence, details in file doc/LICENSE
  */
-
 #ifndef STANDARDINPUTMODULE_H
 #define	STANDARDINPUTMODULE_H
 
@@ -16,6 +16,9 @@
 #include <chrono>   //time for sleep
 #include <thread>
 
+/**
+ * Standard module for devices. 
+ */
 class standardInputModule : public module {
 public:
     standardInputModule();

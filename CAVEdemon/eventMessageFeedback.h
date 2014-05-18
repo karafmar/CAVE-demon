@@ -1,8 +1,9 @@
-/* 
- * File:   eventMessageFeedback.h
- * Author: marketa
- *
- * Created on 26. duben 2014, 20:38
+/*!
+ * @file    eventMessageFeedback.h 
+ * @author: Marketa Karaffova <karafmar@cvut.cz>
+ * @date 22. 4. 2014	
+ * @copyright	Institute of Intermedia, CTU in Prague, 2013
+ * 				Distributed under BSD Licence, details in file doc/LICENSE
  */
 
 #ifndef EVENTMESSAGEFEEDBACK_H
@@ -10,6 +11,10 @@
 
 #include "eventMessage.h"
 
+
+/**
+ * Feedback message.
+ */
 class eventMessageFeedback : public eventMessage {
 public:
     eventMessageFeedback();
@@ -17,7 +22,7 @@ public:
     eventType getType();
     std::string getDeviceId();
     std::string getModuleId();
-    std::time_t getTimestamp();
+    std::chrono::system_clock::time_point getTimestamp();
     std::string getTypeStr();
     void setModuleId(std::string id);
     void setDeviceId(std::string id);
@@ -25,7 +30,7 @@ public:
 private:
     std::string deviceId;
     std::string moduleId;
-    std::time_t timestamp;
+    std::chrono::system_clock::time_point timestamp;
     std::string data = "";
 };
 #endif	/* EVENTMESSAGEFEEDBACK_H */

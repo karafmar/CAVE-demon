@@ -1,8 +1,9 @@
-/* 
- * File:   mockOutModule.h
- * Author: marketa
- *
- * Created on 25. duben 2014, 12:14
+/*!
+ * @file  mockOutModule.h
+ * @author: Marketa Karaffova <karafmar@cvut.cz>
+ * @date 16. 4. 2014	
+ * @copyright	Institute of Intermedia, CTU in Prague, 2013
+ * 				Distributed under BSD Licence, details in file doc/LICENSE
  */
 
 #ifndef MOCKOUTMODULE_H
@@ -14,7 +15,9 @@
 #include <mutex>
 
 
-
+/**
+ * Module that for each recieved class sends a mock feedback message.
+ */
 class mockOutModule  : public module {
 public:
     mockOutModule();

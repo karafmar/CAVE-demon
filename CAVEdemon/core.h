@@ -1,10 +1,10 @@
-/* 
- * File:   core.h
- * Author: marketa
- *
- * Created on 22. duben 2014, 14:20
+/*!
+ * @file   core.h
+ * @author: Marketa Karaffova <karafmar@cvut.cz>
+ * @date 22. 4. 2014	
+ * @copyright	Institute of Intermedia, CTU in Prague, 2013
+ * 				Distributed under BSD Licence, details in file doc/LICENSE
  */
-
 #ifndef CORE_H
 #define	CORE_H
 
@@ -12,20 +12,8 @@
 #include "eventMessage.h"
 #include "moduleBuilder.h"
 #include "module.h"
-
-#include <cstdlib>  //basic lib
-#include <queue>
-#include <utility>  //make_pair
-//#include <string>
-//#include <iostream>
-
-#include <chrono>   //time for sleep
-#include <thread>
 #include <mutex>
-//#include <map>  
-//#include <memory>   //pointer
-
-
+#include <queue>
 
 struct State {
     bool endProgram = false;
@@ -61,8 +49,7 @@ private:
     std::map<std::string, std::shared_ptr<module>> outs;
     std::queue<std::shared_ptr<eventMessage>> eventIn;
     std::queue<std::shared_ptr<eventMessage>> eventOut;
-    
-    
+      
 };
 
 #endif	/* CORE_H */

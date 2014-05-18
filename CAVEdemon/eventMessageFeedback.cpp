@@ -8,7 +8,8 @@
 #include "eventMessageFeedback.h"
 
 eventMessageFeedback::eventMessageFeedback() {
-    timestamp=std::time(NULL);
+    
+     timestamp = std::chrono::system_clock::now();
 }
 
 eventMessageFeedback::~eventMessageFeedback() {
@@ -30,7 +31,7 @@ std::string eventMessageFeedback::getModuleId() {
     return moduleId;
 }
 
-std::time_t eventMessageFeedback::getTimestamp() {
+std::chrono::system_clock::time_point eventMessageFeedback::getTimestamp() {
     return timestamp;
 }
 

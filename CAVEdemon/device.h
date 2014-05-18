@@ -1,14 +1,13 @@
-/* 
- * File:   device.h
- * Author: marketa
- *
- * Created on 25. duben 2014, 12:37
+/*!
+ * @file   device.h
+ * @author: Marketa Karaffova <karafmar@cvut.cz>
+ * @date 22. 4. 2014	
+ * @copyright	Institute of Intermedia, CTU in Prague, 2013
+ * 				Distributed under BSD Licence, details in file doc/LICENSE
  */
 
 #ifndef DEVICE_H
 #define	DEVICE_H
-
-
 
 #include <string>
 #include "eventMessage.h"
@@ -19,6 +18,9 @@ class standardInputModule;
 
 using eventHandler = std::shared_ptr<event::EventDevice>;
 
+/**
+ * Virtual class, all devices must be child classes of device class.
+ */
 class device {
 public:
     device();

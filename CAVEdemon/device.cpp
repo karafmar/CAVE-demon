@@ -23,7 +23,7 @@ void device::acceptFeedback(std::shared_ptr<eventMessage> e) {
 }
 
 /**
- * 
+ * Gives name of a button.
  * @param code 
  * @return String with name of button
  */
@@ -271,421 +271,7 @@ std::string device::getCodeNameButton(uint16_t code) {
         case
             KEY_KATAKANA :
             return "KEY_KATAKANA";
-        case
-            KEY_HIRAGANA :
-            return "";
-        case
-            KEY_HENKAN :
-            return "";
-        case
-            KEY_KATAKANAHIRAGANA :
-            return "";
-        case
-            KEY_MUHENKAN :
-            return "";
-        case
-            KEY_KPJPCOMMA :
-            return "";
-        case
-            KEY_KPENTER :
-            return "";
-        case
-            KEY_RIGHTCTRL :
-            return "";
-        case
-            KEY_KPSLASH :
-            return "";
-        case
-            KEY_SYSRQ :
-            return "";
-        case
-            KEY_RIGHTALT :
-            return "";
-        case
-            KEY_LINEFEED :
-            return "";
-        case
-            KEY_HOME :
-            return "";
-        case
-            KEY_UP :
-            return "";
-        case
-            KEY_PAGEUP :
-            return "";
-        case
-            KEY_LEFT :
-            return "";
-        case
-            KEY_RIGHT :
-            return "";
-        case
-            KEY_END :
-            return "";
-        case
-            KEY_DOWN :
-            return "";
-        case
-            KEY_PAGEDOWN :
-            return "";
-        case
-            KEY_INSERT :
-            return "";
-        case
-            KEY_DELETE :
-            return "";
-        case
-            KEY_MACRO :
-            return "";
-        case
-            KEY_MUTE :
-            return "";
-        case
-            KEY_VOLUMEDOWN :
-            return "";
-        case
-            KEY_VOLUMEUP :
-            return "";
-        case
-            KEY_POWER :
-            return "";
-        case
-            KEY_KPEQUAL :
-            return "";
-        case
-            KEY_KPPLUSMINUS :
-            return "";
-        case
-            KEY_PAUSE :
-            return "";
-        case
-            KEY_KPCOMMA :
-            return "";
-        case
-            KEY_HANGUEL :
-            return "";
-        case
-            KEY_HANJA :
-            return "";
-        case
-            KEY_YEN :
-            return "";
-        case
-            KEY_LEFTMETA :
-            return "";
-        case
-            KEY_RIGHTMETA :
-            return "";
-        case
-            KEY_COMPOSE :
-            return "";
-        case
-            KEY_STOP :
-            return "";
-        case
-            KEY_AGAIN :
-            return "";
-        case
-            KEY_PROPS :
-            return "";
-        case
-            KEY_UNDO :
-            return "";
-        case
-            KEY_FRONT :
-            return "";
-        case
-            KEY_COPY :
-            return "";
-        case
-            KEY_OPEN :
-            return "";
-        case
-            KEY_PASTE :
-            return "";
-        case
-            KEY_FIND :
-            return "";
-        case
-            KEY_CUT :
-            return "";
-        case
-            KEY_HELP :
-            return "";
-        case
-            KEY_MENU :
-            return "";
-        case
-            KEY_CALC :
-            return "";
-        case
-            KEY_SETUP :
-            return "";
-        case
-            KEY_SLEEP :
-            return "";
-        case
-            KEY_WAKEUP :
-            return "";
-        case
-            KEY_FILE :
-            return "";
-        case
-            KEY_SENDFILE :
-            return "";
-        case
-            KEY_DELETEFILE :
-            return "";
-        case
-            KEY_XFER :
-            return "";
-        case
-            KEY_PROG1 :
-            return "";
-        case
-            KEY_PROG2 :
-            return "";
-        case
-            KEY_WWW :
-            return "";
-        case
-            KEY_MSDOS :
-            return "";
-        case
-            KEY_COFFEE :
-            return "";
-        case
-            KEY_DIRECTION :
-            return "";
-        case
-            KEY_CYCLEWINDOWS :
-            return "";
-        case
-            KEY_MAIL :
-            return "";
-        case
-            KEY_BOOKMARKS :
-            return "";
-        case
-            KEY_COMPUTER :
-            return "";
-        case
-            KEY_BACK :
-            return "";
-        case
-            KEY_FORWARD :
-            return "";
-        case
-            KEY_CLOSECD :
-            return "";
-        case
-            KEY_EJECTCD :
-            return "";
-        case
-            KEY_EJECTCLOSECD :
-            return "";
-        case
-            KEY_NEXTSONG :
-            return "";
-        case
-            KEY_PLAYPAUSE :
-            return "";
-        case
-            KEY_PREVIOUSSONG :
-            return "";
-        case
-            KEY_STOPCD :
-            return "";
-        case
-            KEY_RECORD :
-            return "";
-        case
-            KEY_REWIND :
-            return "";
-        case
-            KEY_PHONE :
-            return "";
-        case
-            KEY_ISO :
-            return "";
-        case
-            KEY_CONFIG :
-            return "";
-        case
-            KEY_HOMEPAGE :
-            return "";
-        case
-            KEY_REFRESH :
-            return "";
-        case
-            KEY_EXIT :
-            return "";
-        case
-            KEY_MOVE :
-            return "";
-        case
-            KEY_EDIT :
-            return "";
-        case
-            KEY_SCROLLUP :
-            return "";
-        case
-            KEY_SCROLLDOWN :
-            return "";
-        case
-            KEY_KPLEFTPAREN :
-            return "";
-        case
-            KEY_KPRIGHTPAREN :
-            return "";
-        case
-            KEY_F13 :
-            return "";
-        case
-            KEY_F14 :
-            return "";
-        case
-            KEY_F15 :
-            return "";
-        case
-            KEY_F16 :
-            return "";
-        case
-            KEY_F17 :
-            return "";
-        case
-            KEY_F18 :
-            return "";
-        case
-            KEY_F19 :
-            return "";
-        case
-            KEY_F20 :
-            return "";
-        case
-            KEY_F21 :
-            return "";
-        case
-            KEY_F22 :
-            return "";
-        case
-            KEY_F23 :
-            return "";
-        case
-            KEY_F24 :
-            return "";
-        case
-            KEY_PLAYCD :
-            return "";
-        case
-            KEY_PAUSECD :
-            return "";
-        case
-            KEY_PROG3 :
-            return "";
-        case
-            KEY_PROG4 :
-            return "";
-        case
-            KEY_SUSPEND :
-            return "";
-        case
-            KEY_CLOSE :
-            return "";
-        case
-            KEY_PLAY :
-            return "";
-        case
-            KEY_FASTFORWARD :
-            return "";
-        case
-            KEY_BASSBOOST :
-            return "";
-        case
-            KEY_PRINT :
-            return "";
-        case
-            KEY_HP :
-            return "";
-        case
-            KEY_CAMERA :
-            return "";
-        case
-            KEY_SOUND :
-            return "";
-        case
-            KEY_QUESTION :
-            return "";
-        case
-            KEY_EMAIL :
-            return "";
-        case
-            KEY_CHAT :
-            return "";
-        case
-            KEY_SEARCH :
-            return "";
-        case
-            KEY_CONNECT :
-            return "";
-        case
-            KEY_FINANCE :
-            return "";
-        case
-            KEY_SPORT :
-            return "";
-        case
-            KEY_SHOP :
-            return "";
-        case
-            KEY_ALTERASE :
-            return "";
-        case
-            KEY_CANCEL :
-            return "";
-        case
-            KEY_BRIGHTNESSDOWN :
-            return "";
-        case
-            KEY_BRIGHTNESSUP :
-            return "";
-        case
-            KEY_MEDIA :
-            return "";
-        case
-            KEY_UNKNOWN :
-            return "";
-        case
-            BTN_0 :
-            return "";
-        case
-            BTN_1 :
-            return "";
-        case
-            BTN_2 :
-            return "";
-        case
-            BTN_3 :
-            return "";
-        case
-            BTN_4 :
-            return "";
-        case
-            BTN_5 :
-            return "";
-        case
-            BTN_6 :
-            return "";
-        case
-            BTN_7 :
-            return "";
-        case
-            BTN_8 :
-            return "";
-        case
-            BTN_9 :
-            return "";
-            
+       
             //MOUSE
         case
             BTN_LEFT :
@@ -883,159 +469,7 @@ std::string device::getCodeNameButton(uint16_t code) {
         case
             KEY_FAVORITES :
             return "KEY_FAVORITES";
-        case
-            KEY_EPG :
-            return "";
-        case
-            KEY_PVR :
-            return "";
-        case
-            KEY_MHP :
-            return "";
-        case
-            KEY_LANGUAGE :
-            return "";
-        case
-            KEY_TITLE :
-            return "";
-        case
-            KEY_SUBTITLE :
-            return "";
-        case
-            KEY_ANGLE :
-            return "";
-        case
-            KEY_ZOOM :
-            return "";
-        case
-            KEY_MODE :
-            return "";
-        case
-            KEY_KEYBOARD :
-            return "";
-        case
-            KEY_SCREEN :
-            return "";
-        case
-            KEY_PC :
-            return "";
-        case
-            KEY_TV :
-            return "";
-        case
-            KEY_TV2 :
-            return "";
-        case
-            KEY_VCR :
-            return "";
-        case
-            KEY_VCR2 :
-            return "";
-        case
-            KEY_SAT :
-            return "";
-        case
-            KEY_SAT2 :
-            return "";
-        case
-            KEY_CD :
-            return "";
-        case
-            KEY_TAPE :
-            return "";
-        case
-            KEY_RADIO :
-            return "";
-        case
-            KEY_TUNER :
-            return "";
-        case
-            KEY_PLAYER :
-            return "";
-        case
-            KEY_TEXT :
-            return "";
-        case
-            KEY_DVD :
-            return "";
-        case
-            KEY_AUX :
-            return "";
-        case
-            KEY_MP3 :
-            return "";
-        case
-            KEY_AUDIO :
-            return "";
-        case
-            KEY_VIDEO :
-            return "";
-        case
-            KEY_DIRECTORY :
-            return "";
-        case
-            KEY_LIST :
-            return "";
-        case
-            KEY_MEMO :
-            return "";
-        case
-            KEY_CALENDAR :
-            return "";
-        case
-            KEY_RED :
-            return "";
-        case
-            KEY_GREEN :
-            return "";
-        case
-            KEY_YELLOW :
-            return "";
-        case
-            KEY_BLUE :
-            return "";
-        case
-            KEY_CHANNELUP :
-            return "";
-        case
-            KEY_CHANNELDOWN :
-            return "";
-        case
-            KEY_FIRST :
-            return "";
-        case
-            KEY_LAST :
-            return "";
-        case
-            KEY_AB :
-            return "";
-        case
-            KEY_NEXT :
-            return "";
-        case
-            KEY_RESTART :
-            return "";
-        case
-            KEY_SLOW :
-            return "";
-        case
-            KEY_SHUFFLE :
-            return "";
-        case
-            KEY_BREAK :
-            return "";
-        case
-            KEY_PREVIOUS :
-            return "";
-        case
-            KEY_DIGITS :
-            return "";
-        case
-            KEY_TEEN :
-            return "";
-        case
-            KEY_TWEN :
-            return "";
+        
         case
 
             KEY_DEL_EOL :
@@ -1112,15 +546,811 @@ std::string device::getCodeNameButton(uint16_t code) {
         case
             KEY_FN_B :
             return "KEY_FN_B";
-        case
-            KEY_MAX :
-            return "KEY_MAX";
+case KEY_HIRAGANA: 
+                return "KEY_HIRAGANA"; 
+                break;
+case KEY_HENKAN: 
+                return "KEY_HENKAN"; 
+                break;
+case KEY_KATAKANAHIRAGANA: 
+                return "KEY_KATAKANAHIRAGANA"; 
+                break;
+case KEY_MUHENKAN: 
+                return "KEY_MUHENKAN"; 
+                break;
+case KEY_KPJPCOMMA: 
+                return "KEY_KPJPCOMMA"; 
+                break;
+case KEY_KPENTER: 
+                return "KEY_KPENTER"; 
+                break;
+case KEY_RIGHTCTRL: 
+                return "KEY_RIGHTCTRL"; 
+                break;
+case KEY_KPSLASH: 
+                return "KEY_KPSLASH"; 
+                break;
+case KEY_SYSRQ: 
+                return "KEY_SYSRQ"; 
+                break;
+case KEY_RIGHTALT: 
+                return "KEY_RIGHTALT"; 
+                break;
+case KEY_LINEFEED: 
+                return "KEY_LINEFEED"; 
+                break;
+case KEY_HOME: 
+                return "KEY_HOME"; 
+                break;
+case KEY_UP: 
+                return "KEY_UP"; 
+                break;
+case KEY_PAGEUP: 
+                return "KEY_PAGEUP"; 
+                break;
+case KEY_LEFT: 
+                return "KEY_LEFT"; 
+                break;
+case KEY_RIGHT: 
+                return "KEY_RIGHT"; 
+                break;
+case KEY_END: 
+                return "KEY_END"; 
+                break;
+case KEY_DOWN: 
+                return "KEY_DOWN"; 
+                break;
+case KEY_PAGEDOWN: 
+                return "KEY_PAGEDOWN"; 
+                break;
+case KEY_INSERT: 
+                return "KEY_INSERT"; 
+                break;
+case KEY_DELETE: 
+                return "KEY_DELETE"; 
+                break;
+case KEY_MACRO: 
+                return "KEY_MACRO"; 
+                break;
+case KEY_VOLUMEDOWN: 
+                return "KEY_VOLUMEDOWN"; 
+                break;
+case KEY_VOLUMEUP: 
+                return "KEY_VOLUMEUP"; 
+                break;
+case KEY_POWER: 
+                return "KEY_POWER"; 
+                break;
+case KEY_KPEQUAL: 
+                return "KEY_KPEQUAL"; 
+                break;
+case KEY_KPPLUSMINUS: 
+                return "KEY_KPPLUSMINUS"; 
+                break;
+case KEY_PAUSE: 
+                return "KEY_PAUSE"; 
+                break;
+case KEY_SCALE: 
+                return "KEY_SCALE"; 
+                break;
+case KEY_KPCOMMA: 
+                return "KEY_KPCOMMA"; 
+                break;
+case KEY_HANGEUL: 
+                return "KEY_HANGEUL"; 
+                break;
+case KEY_HANJA: 
+                return "KEY_HANJA"; 
+                break;
+case KEY_YEN: 
+                return "KEY_YEN"; 
+                break;
+case KEY_LEFTMETA: 
+                return "KEY_LEFTMETA"; 
+                break;
+case KEY_RIGHTMETA: 
+                return "KEY_RIGHTMETA"; 
+                break;
+case KEY_COMPOSE: 
+                return "KEY_COMPOSE"; 
+                break;
+case KEY_STOP: 
+                return "KEY_STOP"; 
+                break;
+case KEY_AGAIN: 
+                return "KEY_AGAIN"; 
+                break;
+case KEY_PROPS: 
+                return "KEY_PROPS"; 
+                break;
+case KEY_UNDO: 
+                return "KEY_UNDO"; 
+                break;
+case KEY_FRONT: 
+                return "KEY_FRONT"; 
+                break;
+case KEY_COPY: 
+                return "KEY_COPY"; 
+                break;
+case KEY_OPEN: 
+                return "KEY_OPEN"; 
+                break;
+case KEY_PASTE: 
+                return "KEY_PASTE"; 
+                break;
+case KEY_FIND: 
+                return "KEY_FIND"; 
+                break;
+case KEY_CUT: 
+                return "KEY_CUT"; 
+                break;
+case KEY_HELP: 
+                return "KEY_HELP"; 
+                break;
+case KEY_MENU: 
+                return "KEY_MENU"; 
+                break;
+case KEY_CALC: 
+                return "KEY_CALC"; 
+                break;
+case KEY_SETUP: 
+                return "KEY_SETUP"; 
+                break;
+case KEY_SLEEP: 
+                return "KEY_SLEEP"; 
+                break;
+case KEY_WAKEUP: 
+                return "KEY_WAKEUP"; 
+                break;
+case KEY_FILE: 
+                return "KEY_FILE"; 
+                break;
+case KEY_SENDFILE: 
+                return "KEY_SENDFILE"; 
+                break;
+case KEY_DELETEFILE: 
+                return "KEY_DELETEFILE"; 
+                break;
+case KEY_XFER: 
+                return "KEY_XFER"; 
+                break;
+case KEY_PROG1: 
+                return "KEY_PROG1"; 
+                break;
+case KEY_PROG2: 
+                return "KEY_PROG2"; 
+                break;
+case KEY_WWW: 
+                return "KEY_WWW"; 
+                break;
+case KEY_MSDOS: 
+                return "KEY_MSDOS"; 
+                break;
+case KEY_SCREENLOCK: 
+                return "KEY_SCREENLOCK"; 
+                break;
+case KEY_DIRECTION: 
+                return "KEY_DIRECTION"; 
+                break;
+case KEY_CYCLEWINDOWS: 
+                return "KEY_CYCLEWINDOWS"; 
+                break;
+case KEY_MAIL: 
+                return "KEY_MAIL"; 
+                break;
+case KEY_BOOKMARKS: 
+                return "KEY_BOOKMARKS"; 
+                break;
+case KEY_COMPUTER: 
+                return "KEY_COMPUTER"; 
+                break;
+case KEY_BACK: 
+                return "KEY_BACK"; 
+                break;
+case KEY_FORWARD: 
+                return "KEY_FORWARD"; 
+                break;
+case KEY_CLOSECD: 
+                return "KEY_CLOSECD"; 
+                break;
+case KEY_EJECTCD: 
+                return "KEY_EJECTCD"; 
+                break;
+case KEY_EJECTCLOSECD: 
+                return "KEY_EJECTCLOSECD"; 
+                break;
+case KEY_NEXTSONG: 
+                return "KEY_NEXTSONG"; 
+                break;
+case KEY_PLAYPAUSE: 
+                return "KEY_PLAYPAUSE"; 
+                break;
+case KEY_PREVIOUSSONG: 
+                return "KEY_PREVIOUSSONG"; 
+                break;
+case KEY_STOPCD: 
+                return "KEY_STOPCD"; 
+                break;
+case KEY_RECORD: 
+                return "KEY_RECORD"; 
+                break;
+case KEY_REWIND: 
+                return "KEY_REWIND"; 
+                break;
+case KEY_PHONE: 
+                return "KEY_PHONE"; 
+                break;
+case KEY_ISO: 
+                return "KEY_ISO"; 
+                break;
+case KEY_CONFIG: 
+                return "KEY_CONFIG"; 
+                break;
+case KEY_HOMEPAGE: 
+                return "KEY_HOMEPAGE"; 
+                break;
+case KEY_REFRESH: 
+                return "KEY_REFRESH"; 
+                break;
+case KEY_EXIT: 
+                return "KEY_EXIT"; 
+                break;
+case KEY_MOVE: 
+                return "KEY_MOVE"; 
+                break;
+case KEY_EDIT: 
+                return "KEY_EDIT"; 
+                break;
+case KEY_SCROLLUP: 
+                return "KEY_SCROLLUP"; 
+                break;
+case KEY_SCROLLDOWN: 
+                return "KEY_SCROLLDOWN"; 
+                break;
+case KEY_KPLEFTPAREN: 
+                return "KEY_KPLEFTPAREN"; 
+                break;
+case KEY_KPRIGHTPAREN: 
+                return "KEY_KPRIGHTPAREN"; 
+                break;
+case KEY_NEW: 
+                return "KEY_NEW"; 
+                break;
+case KEY_REDO: 
+                return "KEY_REDO"; 
+                break;
+case KEY_F13: 
+                return "KEY_F13"; 
+                break;
+case KEY_F14: 
+                return "KEY_F14"; 
+                break;
+case KEY_F15: 
+                return "KEY_F15"; 
+                break;
+case KEY_F16: 
+                return "KEY_F16"; 
+                break;
+case KEY_F17: 
+                return "KEY_F17"; 
+                break;
+case KEY_F18: 
+                return "KEY_F18"; 
+                break;
+case KEY_F19: 
+                return "KEY_F19"; 
+                break;
+case KEY_F20: 
+                return "KEY_F20"; 
+                break;
+case KEY_F21: 
+                return "KEY_F21"; 
+                break;
+case KEY_F22: 
+                return "KEY_F22"; 
+                break;
+case KEY_F23: 
+                return "KEY_F23"; 
+                break;
+case KEY_F24: 
+                return "KEY_F24"; 
+                break;
+case KEY_PLAYCD: 
+                return "KEY_PLAYCD"; 
+                break;
+case KEY_PAUSECD: 
+                return "KEY_PAUSECD"; 
+                break;
+case KEY_PROG3: 
+                return "KEY_PROG3"; 
+                break;
+case KEY_PROG4: 
+                return "KEY_PROG4"; 
+                break;
+case KEY_DASHBOARD: 
+                return "KEY_DASHBOARD"; 
+                break;
+case KEY_SUSPEND: 
+                return "KEY_SUSPEND"; 
+                break;
+case KEY_CLOSE: 
+                return "KEY_CLOSE"; 
+                break;
+case KEY_PLAY: 
+                return "KEY_PLAY"; 
+                break;
+case KEY_FASTFORWARD: 
+                return "KEY_FASTFORWARD"; 
+                break;
+case KEY_BASSBOOST: 
+                return "KEY_BASSBOOST"; 
+                break;
+case KEY_PRINT: 
+                return "KEY_PRINT"; 
+                break;
+case KEY_HP: 
+                return "KEY_HP"; 
+                break;
+case KEY_CAMERA: 
+                return "KEY_CAMERA"; 
+                break;
+case KEY_SOUND: 
+                return "KEY_SOUND"; 
+                break;
+case KEY_QUESTION: 
+                return "KEY_QUESTION"; 
+                break;
+case KEY_EMAIL: 
+                return "KEY_EMAIL"; 
+                break;
+case KEY_CHAT: 
+                return "KEY_CHAT"; 
+                break;
+case KEY_SEARCH: 
+                return "KEY_SEARCH"; 
+                break;
+case KEY_CONNECT: 
+                return "KEY_CONNECT"; 
+                break;
+case KEY_FINANCE: 
+                return "KEY_FINANCE"; 
+                break;
+case KEY_SPORT: 
+                return "KEY_SPORT"; 
+                break;
+case KEY_SHOP: 
+                return "KEY_SHOP"; 
+                break;
+case KEY_ALTERASE: 
+                return "KEY_ALTERASE"; 
+                break;
+case KEY_CANCEL: 
+                return "KEY_CANCEL"; 
+                break;
+case KEY_BRIGHTNESSDOWN: 
+                return "KEY_BRIGHTNESSDOWN"; 
+                break;
+case KEY_BRIGHTNESSUP: 
+                return "KEY_BRIGHTNESSUP"; 
+                break;
+case KEY_MEDIA: 
+                return "KEY_MEDIA"; 
+                break;
+case KEY_SWITCHVIDEOMODE: 
+                return "KEY_SWITCHVIDEOMODE"; 
+                break;
+case KEY_KBDILLUMTOGGLE: 
+                return "KEY_KBDILLUMTOGGLE"; 
+                break;
+case KEY_KBDILLUMDOWN: 
+                return "KEY_KBDILLUMDOWN"; 
+                break;
+case KEY_KBDILLUMUP: 
+                return "KEY_KBDILLUMUP"; 
+                break;
+case KEY_SEND: 
+                return "KEY_SEND"; 
+                break;
+case KEY_REPLY: 
+                return "KEY_REPLY"; 
+                break;
+case KEY_FORWARDMAIL: 
+                return "KEY_FORWARDMAIL"; 
+                break;
+case KEY_SAVE: 
+                return "KEY_SAVE"; 
+                break;
+case KEY_DOCUMENTS: 
+                return "KEY_DOCUMENTS"; 
+                break;
+case KEY_BATTERY: 
+                return "KEY_BATTERY"; 
+                break;
+case KEY_BLUETOOTH: 
+                return "KEY_BLUETOOTH"; 
+                break;
+case KEY_WLAN: 
+                return "KEY_WLAN"; 
+                break;
+case KEY_UWB: 
+                return "KEY_UWB"; 
+                break;
+case KEY_UNKNOWN: 
+                return "KEY_UNKNOWN"; 
+                break;
+case KEY_VIDEO_NEXT: 
+                return "KEY_VIDEO_NEXT"; 
+                break;
+case KEY_VIDEO_PREV: 
+                return "KEY_VIDEO_PREV"; 
+                break;
+case KEY_BRIGHTNESS_CYCLE: 
+                return "KEY_BRIGHTNESS_CYCLE"; 
+                break;
+case KEY_BRIGHTNESS_ZERO: 
+                return "KEY_BRIGHTNESS_ZERO"; 
+                break;
+case KEY_DISPLAY_OFF: 
+                return "KEY_DISPLAY_OFF"; 
+                break;
+case KEY_WIMAX: 
+                return "KEY_WIMAX"; 
+                break;
+case KEY_RFKILL: 
+                return "KEY_RFKILL"; 
+                break;
+case KEY_MICMUTE: 
+                return "KEY_MICMUTE"; 
+                break;
+case KEY_EPG: 
+                return "KEY_EPG"; 
+                break;
+case KEY_PVR: 
+                return "KEY_PVR"; 
+                break;
+case KEY_MHP: 
+                return "KEY_MHP"; 
+                break;
+case KEY_LANGUAGE: 
+                return "KEY_LANGUAGE"; 
+                break;
+case KEY_TITLE: 
+                return "KEY_TITLE"; 
+                break;
+case KEY_SUBTITLE: 
+                return "KEY_SUBTITLE"; 
+                break;
+case KEY_ANGLE: 
+                return "KEY_ANGLE"; 
+                break;
+case KEY_ZOOM: 
+                return "KEY_ZOOM"; 
+                break;
+case KEY_MODE: 
+                return "KEY_MODE"; 
+                break;
+case KEY_KEYBOARD: 
+                return "KEY_KEYBOARD"; 
+                break;
+case KEY_SCREEN: 
+                return "KEY_SCREEN"; 
+                break;
+case KEY_PC: 
+                return "KEY_PC"; 
+                break;
+case KEY_TV: 
+                return "KEY_TV"; 
+                break;
+case KEY_TV2: 
+                return "KEY_TV2"; 
+                break;
+case KEY_VCR: 
+                return "KEY_VCR"; 
+                break;
+case KEY_VCR2: 
+                return "KEY_VCR2"; 
+                break;
+case KEY_SAT: 
+                return "KEY_SAT"; 
+                break;
+case KEY_SAT2: 
+                return "KEY_SAT2"; 
+                break;
+case KEY_CD: 
+                return "KEY_CD"; 
+                break;
+case KEY_TAPE: 
+                return "KEY_TAPE"; 
+                break;
+case KEY_RADIO: 
+                return "KEY_RADIO"; 
+                break;
+case KEY_TUNER: 
+                return "KEY_TUNER"; 
+                break;
+case KEY_PLAYER: 
+                return "KEY_PLAYER"; 
+                break;
+case KEY_TEXT: 
+                return "KEY_TEXT"; 
+                break;
+case KEY_DVD: 
+                return "KEY_DVD"; 
+                break;
+case KEY_AUX: 
+                return "KEY_AUX"; 
+                break;
+case KEY_MP3: 
+                return "KEY_MP3"; 
+                break;
+case KEY_AUDIO: 
+                return "KEY_AUDIO"; 
+                break;
+case KEY_VIDEO: 
+                return "KEY_VIDEO"; 
+                break;
+case KEY_DIRECTORY: 
+                return "KEY_DIRECTORY"; 
+                break;
+case KEY_LIST: 
+                return "KEY_LIST"; 
+                break;
+case KEY_MEMO: 
+                return "KEY_MEMO"; 
+                break;
+case KEY_CALENDAR: 
+                return "KEY_CALENDAR"; 
+                break;
+case KEY_RED: 
+                return "KEY_RED"; 
+                break;
+case KEY_GREEN: 
+                return "KEY_GREEN"; 
+                break;
+case KEY_YELLOW: 
+                return "KEY_YELLOW"; 
+                break;
+case KEY_BLUE: 
+                return "KEY_BLUE"; 
+                break;
+case KEY_CHANNELUP: 
+                return "KEY_CHANNELUP"; 
+                break;
+case KEY_CHANNELDOWN: 
+                return "KEY_CHANNELDOWN"; 
+                break;
+case KEY_FIRST: 
+                return "KEY_FIRST"; 
+                break;
+case KEY_LAST: 
+                return "KEY_LAST"; 
+                break;
+case KEY_AB: 
+                return "KEY_AB"; 
+                break;
+case KEY_NEXT: 
+                return "KEY_NEXT"; 
+                break;
+case KEY_RESTART: 
+                return "KEY_RESTART"; 
+                break;
+case KEY_SLOW: 
+                return "KEY_SLOW"; 
+                break;
+case KEY_SHUFFLE: 
+                return "KEY_SHUFFLE"; 
+                break;
+case KEY_BREAK: 
+                return "KEY_BREAK"; 
+                break;
+case KEY_PREVIOUS: 
+                return "KEY_PREVIOUS"; 
+                break;
+case KEY_DIGITS: 
+                return "KEY_DIGITS"; 
+                break;
+case KEY_TEEN: 
+                return "KEY_TEEN"; 
+                break;
+case KEY_TWEN: 
+                return "KEY_TWEN"; 
+                break;
+case KEY_VIDEOPHONE: 
+                return "KEY_VIDEOPHONE"; 
+                break;
+case KEY_GAMES: 
+                return "KEY_GAMES"; 
+                break;
+case KEY_ZOOMIN: 
+                return "KEY_ZOOMIN"; 
+                break;
+case KEY_ZOOMOUT: 
+                return "KEY_ZOOMOUT"; 
+                break;
+case KEY_ZOOMRESET: 
+                return "KEY_ZOOMRESET"; 
+                break;
+case KEY_WORDPROCESSOR: 
+                return "KEY_WORDPROCESSOR"; 
+                break;
+case KEY_EDITOR: 
+                return "KEY_EDITOR"; 
+                break;
+case KEY_SPREADSHEET: 
+                return "KEY_SPREADSHEET"; 
+                break;
+case KEY_GRAPHICSEDITOR: 
+                return "KEY_GRAPHICSEDITOR"; 
+                break;
+case KEY_PRESENTATION: 
+                return "KEY_PRESENTATION"; 
+                break;
+case KEY_DATABASE: 
+                return "KEY_DATABASE"; 
+                break;
+case KEY_NEWS: 
+                return "KEY_NEWS"; 
+                break;
+case KEY_VOICEMAIL: 
+                return "KEY_VOICEMAIL"; 
+                break;
+case KEY_ADDRESSBOOK: 
+                return "KEY_ADDRESSBOOK"; 
+                break;
+case KEY_MESSENGER: 
+                return "KEY_MESSENGER"; 
+                break;
+case KEY_DISPLAYTOGGLE: 
+                return "KEY_DISPLAYTOGGLE"; 
+                break;
+case KEY_SPELLCHECK: 
+                return "KEY_SPELLCHECK"; 
+                break;
+case KEY_LOGOFF: 
+                return "KEY_LOGOFF"; 
+                break;
+case KEY_DOLLAR: 
+                return "KEY_DOLLAR"; 
+                break;
+case KEY_EURO: 
+                return "KEY_EURO"; 
+                break;
+case KEY_FRAMEBACK: 
+                return "KEY_FRAMEBACK"; 
+                break;
+case KEY_FRAMEFORWARD: 
+                return "KEY_FRAMEFORWARD"; 
+                break;
+case KEY_CONTEXT_MENU: 
+                return "KEY_CONTEXT_MENU"; 
+                break;
+case KEY_MEDIA_REPEAT: 
+                return "KEY_MEDIA_REPEAT"; 
+                break;
+case KEY_10CHANNELSUP: 
+                return "KEY_10CHANNELSUP"; 
+                break;
+case KEY_10CHANNELSDOWN: 
+                return "KEY_10CHANNELSDOWN"; 
+                break;
+case KEY_IMAGES: 
+                return "KEY_IMAGES"; 
+                break;
+case KEY_BRL_DOT1: 
+                return "KEY_BRL_DOT1"; 
+                break;
+case KEY_BRL_DOT2: 
+                return "KEY_BRL_DOT2"; 
+                break;
+case KEY_BRL_DOT3: 
+                return "KEY_BRL_DOT3"; 
+                break;
+case KEY_BRL_DOT4: 
+                return "KEY_BRL_DOT4"; 
+                break;
+case KEY_BRL_DOT5: 
+                return "KEY_BRL_DOT5"; 
+                break;
+case KEY_BRL_DOT6: 
+                return "KEY_BRL_DOT6"; 
+                break;
+case KEY_BRL_DOT7: 
+                return "KEY_BRL_DOT7"; 
+                break;
+case KEY_BRL_DOT8: 
+                return "KEY_BRL_DOT8"; 
+                break;
+case KEY_BRL_DOT9: 
+                return "KEY_BRL_DOT9"; 
+                break;
+case KEY_BRL_DOT10: 
+                return "KEY_BRL_DOT10"; 
+                break;
+case KEY_NUMERIC_0: 
+                return "KEY_NUMERIC_0"; 
+                break;
+case KEY_NUMERIC_1: 
+                return "KEY_NUMERIC_1"; 
+                break;
+case KEY_NUMERIC_2: 
+                return "KEY_NUMERIC_2"; 
+                break;
+case KEY_NUMERIC_3: 
+                return "KEY_NUMERIC_3"; 
+                break;
+case KEY_NUMERIC_4: 
+                return "KEY_NUMERIC_4"; 
+                break;
+case KEY_NUMERIC_5: 
+                return "KEY_NUMERIC_5"; 
+                break;
+case KEY_NUMERIC_6: 
+                return "KEY_NUMERIC_6"; 
+                break;
+case KEY_NUMERIC_7: 
+                return "KEY_NUMERIC_7"; 
+                break;
+case KEY_NUMERIC_8: 
+                return "KEY_NUMERIC_8"; 
+                break;
+case KEY_NUMERIC_9: 
+                return "KEY_NUMERIC_9"; 
+                break;
+case KEY_NUMERIC_STAR: 
+                return "KEY_NUMERIC_STAR"; 
+                break;
+case KEY_NUMERIC_POUND: 
+                return "KEY_NUMERIC_POUND"; 
+                break;
+case KEY_CAMERA_FOCUS: 
+                return "KEY_CAMERA_FOCUS"; 
+                break;
+case KEY_WPS_BUTTON: 
+                return "KEY_WPS_BUTTON"; 
+                break;
+case KEY_TOUCHPAD_TOGGLE: 
+                return "KEY_TOUCHPAD_TOGGLE"; 
+                break;
+case KEY_TOUCHPAD_ON: 
+                return "KEY_TOUCHPAD_ON"; 
+                break;
+case KEY_TOUCHPAD_OFF: 
+                return "KEY_TOUCHPAD_OFF"; 
+                break;
+case KEY_CAMERA_ZOOMIN: 
+                return "KEY_CAMERA_ZOOMIN"; 
+                break;
+case KEY_CAMERA_ZOOMOUT: 
+                return "KEY_CAMERA_ZOOMOUT"; 
+                break;
+case KEY_CAMERA_UP: 
+                return "KEY_CAMERA_UP"; 
+                break;
+case KEY_CAMERA_DOWN: 
+                return "KEY_CAMERA_DOWN"; 
+                break;
+case KEY_CAMERA_LEFT: 
+                return "KEY_CAMERA_LEFT"; 
+                break;
+case KEY_CAMERA_RIGHT: 
+                return "KEY_CAMERA_RIGHT"; 
+                break;
+case KEY_MIN_INTERESTING: 
+                return "KEY_MIN_INTERESTING"; 
+                break;
+case KEY_MAX: 
+                return "KEY_MAX"; 
+                break;
+case KEY_CNT: 
+                return "KEY_CNT"; 
+                break;
+                                                
         default: return "UNKNOWN";
     }
 
 }
 /**
- * 
+ * Gives name of an axis.
  * @param code
  * @return name of axis.
  */
@@ -1152,7 +1382,7 @@ std::string device::getCodeNameRelAxis(uint16_t code) {
 }
 
 /**
- * 
+ * Gives name of an axis.
  * @param code
  * @return Name of axis.
  */

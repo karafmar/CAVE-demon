@@ -1,10 +1,10 @@
-/* 
- * File:   trackdModule.h
- * Author: marketa
- *
- * Created on 11. květen 2014, 20:00
+/*!
+ * @file   mtrackdModule.h
+ * @author: Marketa Karaffova <karafmar@cvut.cz>
+ * @date 11. 5. 2014	
+ * @copyright	Institute of Intermedia, CTU in Prague, 2013
+ * 				Distributed under BSD Licence, details in file doc/LICENSE
  */
-
 #ifndef TRACKDMODULE_H
 #define	TRACKDMODULE_H
 
@@ -15,6 +15,9 @@
 #include <mutex>
 #include <queue>
 
+/**
+ * Class for output module compatible with trackd.
+ */
 class trackdModule: public module {
 public:
     trackdModule();

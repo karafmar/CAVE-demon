@@ -1,10 +1,10 @@
-/* 
- * File:   defaultDevice.h
- * Author: marketa
- *
- * Created on 27. duben 2014, 15:41
+/*!
+ * @file  defaultDevice.h
+ * @author: Marketa Karaffova <karafmar@cvut.cz>
+ * @date 22. 4. 2014	
+ * @copyright	Institute of Intermedia, CTU in Prague, 2013
+ * 				Distributed under BSD Licence, details in file doc/LICENSE
  */
-
 #ifndef DEFAULTDEVICE_H
 #define	DEFAULTDEVICE_H
 
@@ -12,6 +12,8 @@
 #include <chrono>   //time for sleep
 #include <thread>
 
+/**Class represents a default device connected via USB.
+ */
 class defaultDevice : public device {
 public:
     defaultDevice(std::string id, eventHandler neweh);

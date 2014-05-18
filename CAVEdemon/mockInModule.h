@@ -1,10 +1,10 @@
-/* 
- * File:   mockInModule.h
- * Author: marketa
- *
- * Created on 22. duben 2014, 13:52
+/*!
+ * @file   mockInModule.h
+ * @author: Marketa Karaffova <karafmar@cvut.cz>
+ * @date 16. 4. 2014	
+ * @copyright	Institute of Intermedia, CTU in Prague, 2013
+ * 				Distributed under BSD Licence, details in file doc/LICENSE
  */
-
 #ifndef MOCKINMODULE_H
 #define	MOCKINMODULE_H
 
@@ -13,6 +13,9 @@
 #include <thread>
 #include <mutex>
 
+/**
+ * Class for simulating sending messages.
+ */
 class mockInModule : public module {
 public:
     mockInModule();

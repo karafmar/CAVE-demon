@@ -6,6 +6,12 @@
  */
 
 #include "core.h"
+#include <cstdlib>  //basic lib
+#include <queue>
+#include <utility>  //make_pair
+
+#include <chrono>   //time for sleep
+#include <thread>
 
 using namespace std;
 
@@ -167,7 +173,6 @@ void core::sendOut(std::shared_ptr<eventMessage> e) {
  * Thread is awoken by setting state.callInThread true.
  */
 void core::checkIns() {
-    std::this_thread::sleep_for(std::chrono::milliseconds(500));
     while (!state.theEnd) {
         if (state.callInThread) {
             std::lock_guard<std::mutex> lock(insMutex);
@@ -190,7 +195,6 @@ void core::checkIns() {
  * Thread is awoken by setting state.callOutThread true.
  */
 void core::checkOuts() {
-    std::this_thread::sleep_for(std::chrono::milliseconds(500));
     while (!state.theEnd) {
         if (state.callOutThread) {
             std::lock_guard<std::mutex> lock(outsMutex);

@@ -1,15 +1,18 @@
-/* 
- * File:   icAbsAxis.h
- * Author: marketa
- *
- * Created on 2. květen 2014, 16:05
+/*!
+ * @file   ic.h
+ * @author: Marketa Karaffova <karafmar@cvut.cz>
+ * @date 22. 4. 2014	
+ * @copyright	Institute of Intermedia, CTU in Prague, 2013
+ * 				Distributed under BSD Licence, details in file doc/LICENSE
  */
-
 #ifndef ICABSAXIS_H
 #define	ICABSAXIS_H
 
 #include "ic.h"
 
+/**
+ * Class represents input type absolute axis..
+ */
 class icAbsAxis : public ic {
 public:
     icAbsAxis();

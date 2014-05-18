@@ -1,8 +1,9 @@
-/* 
- * File:   eventMessageNotice.h
- * Author: marketa
- *
- * Created on 21. duben 2014, 19:21
+/*!
+ * @file  eventMessageNotice.h 
+ * @author: Marketa Karaffova <karafmar@cvut.cz>
+ * @date 22. 4. 2014	
+ * @copyright	Institute of Intermedia, CTU in Prague, 2013
+ * 				Distributed under BSD Licence, details in file doc/LICENSE
  */
 
 #ifndef EVENTMESSAGENOTICE_H
@@ -10,7 +11,9 @@
 
 #include "eventMessage.h"
 
-
+/**
+ * EventMessage for simple string message.
+ */
 class eventMessageNotice : public eventMessage {
 public:
     eventMessageNotice();
@@ -19,7 +22,7 @@ public:
     eventType getType();
     std::string getDeviceId();
     std::string getModuleId();
-    std::time_t getTimestamp();
+    std::chrono::system_clock::time_point getTimestamp();
     std::string getTypeStr();
     std::string getdata();
     void setModuleId(std::string id);
@@ -29,7 +32,7 @@ public:
 private:
     std::string deviceId;
     std::string moduleId;
-    std::time_t timestamp;
+    std::chrono::system_clock::time_point timestamp;
     std::string data="";
 };
 

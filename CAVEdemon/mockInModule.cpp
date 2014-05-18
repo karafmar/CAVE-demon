@@ -41,9 +41,8 @@ void mockInModule::refresh(std::shared_ptr<std::map<std::string, std::string>> m
  * @param e Accepted event
  */
 void mockInModule::accept(std::shared_ptr<eventMessage> e) {
-
-    std::cout << mockInModule::getID() << ":::Event received - " << e->getTypeStr() << " type from " << e->getDeviceId() << " device "
-            << e->getModuleId() << " module in " << e->getTimestamp() << "\n";
+    
+    std::cout <<e;
     e.reset();
 }
 

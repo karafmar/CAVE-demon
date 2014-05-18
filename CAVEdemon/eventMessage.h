@@ -1,19 +1,23 @@
-/* 
- * File:   eventMessage.h
- * Author: Marketa
- *
- * Created on 13. duben 2014, 20:08
+/*!
+ * @file   eventMessage.h
+ * @author: Marketa Karaffova <karafmar@cvut.cz>
+ * @date 22. 4. 2014	
+ * @copyright	Institute of Intermedia, CTU in Prague, 2013
+ * 				Distributed under BSD Licence, details in file doc/LICENSE
  */
 
 #ifndef EVENTMESSAGE_H
 #define	EVENTMESSAGE_H
 
 #include <string>
-#include <ctime>
+#include <chrono>
 #include <iostream>
 #include <memory>
 #include "eventType.h"
 
+/**
+ * Virtual class for messages, all messages has to be children of this class. 
+ */
 class eventMessage {
 public:
     
@@ -26,10 +30,9 @@ public:
     virtual std::string getModuleId()=0;
     virtual void setModuleId(std::string id)=0;
     virtual void setDeviceId(std::string id)=0;
-    virtual std::time_t getTimestamp()=0;
-//    virtual 
+    virtual std::chrono::system_clock::time_point getTimestamp()=0;
 private:
-    
+   
 };
 std::ostream& operator<<(std::ostream& os, const std::shared_ptr<eventMessage>& event);
 #endif	/* EVENTMESSAGE_H */

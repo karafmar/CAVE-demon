@@ -1,8 +1,9 @@
-/* 
- * File:   eventMessageNewDevice.h
- * Author: marketa
- *
- * Created on 26. duben 2014, 20:38
+/*!
+ * @file   eventMessageNewDevice.h 
+ * @author: Marketa Karaffova <karafmar@cvut.cz>
+ * @date 22. 4. 2014	
+ * @copyright	Institute of Intermedia, CTU in Prague, 2013
+ * 				Distributed under BSD Licence, details in file doc/LICENSE
  */
 
 #ifndef EVENTMESSAGENEWDEVICE_H
@@ -12,6 +13,9 @@
 #include "ic.h"
 #include <vector>
 
+/**
+ * EventMessage intrudicing a new device.
+ */
 class eventMessageNewDevice : public eventMessage {
 public:
     eventMessageNewDevice();
@@ -20,7 +24,7 @@ public:
     std::string getDeviceId();
     std::string getName();
     std::string getModuleId();
-    std::time_t getTimestamp();
+    std::chrono::system_clock::time_point getTimestamp();
     std::string getTypeStr();
     std::vector<std::shared_ptr<ic>> getInput();
     void setInput(std::vector<std::shared_ptr<ic>> in);
@@ -32,7 +36,7 @@ private:
     std::string deviceId;
     std::string name;
     std::string moduleId;
-    std::time_t timestamp;
+    std::chrono::system_clock::time_point timestamp;
     std::vector<std::shared_ptr<ic>> input;
 };
 #endif	/* EVENTMESSAGENEWDEVICE_H */

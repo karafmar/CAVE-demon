@@ -1,8 +1,18 @@
+/*!
+ * @file   simpleModule.h
+ * @author: Marketa Karaffova <karafmar@cvut.cz>
+ * @date 16. 4. 2014	
+ * @copyright	Institute of Intermedia, CTU in Prague, 2013
+ * 				Distributed under BSD Licence, details in file doc/LICENSE
+ */
 #ifndef SIMPLEMODULE_H
 #define SIMPLEMODULE_H
 
 #include "module.h"
 
+/**
+ * Simple module for learning how to write modules.
+ */
 class simpleModule : public module {
 public:
     simpleModule();

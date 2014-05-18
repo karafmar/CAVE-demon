@@ -1,15 +1,17 @@
-/* 
- * File:   icButton.h
- * Author: marketa
- *
- * Created on 2. květen 2014, 15:56
+/*!
+ * @file   ic.h
+ * @author: Marketa Karaffova <karafmar@cvut.cz>
+ * @date 22. 4. 2014	
+ * @copyright	Institute of Intermedia, CTU in Prague, 2013
+ * 				Distributed under BSD Licence, details in file doc/LICENSE
  */
 
 #ifndef ICBUTTON_H
 #define	ICBUTTON_H
 
 #include "ic.h"
-
+/** Class represents input type button.
+ */
 class icButton  : public ic{
 public:
     icButton();

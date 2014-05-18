@@ -6,12 +6,10 @@
  */
 
 #include <thread>
-//#include <linux/input.h>
 #include "defaultDevice.h"
 #include <iostream>
 #include <algorithm>
 #include "eventBuilder.h"
-//#include "inputType.h"
 #include  "standardInputModule.h"
 #include "icButton.h"
 #include "icRelAxis.h"
