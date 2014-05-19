@@ -56,7 +56,7 @@ void standardInputModule::loadDevices() {
         std::stringstream ss;
         ss << hash_fn(p);
         std::string hash = ss.str();
-        if (devs.find(hash) == devs.end()){
+        if (devs.find(hash) == devs.end()) {
             std::shared_ptr<device> dev = deviceBuilder::buildDevice(hash, p);
             if (dev) {
                 std::lock_guard<std::mutex> lock(devsMutex);
@@ -74,12 +74,12 @@ void standardInputModule::loadDevices() {
  */
 int standardInputModule::bye() {
     std::lock_guard<std::mutex> lock(devsMutex);
-    endThread = true; 
+    endThread = true;
     t.join();
     for (auto& d : devs) {
         d.second->close();
         devs.erase(d.first);
-    } 
+    }
     return 0;
 }
 
@@ -92,9 +92,8 @@ void standardInputModule::refresh(std::shared_ptr<std::map<std::string, std::str
     for (auto& d : devs) {
         d.second->sendHello();
     }
-    loadDevices();   
+    loadDevices();
 }
-
 
 /**
  * Search for a device in devs with id same as eventMessage deviceId and sends it to the device.
@@ -117,7 +116,7 @@ void standardInputModule::sendOut(std::shared_ptr<eventMessage> e) {
     std::lock_guard<std::mutex> lock(outsMutex);
     e->setModuleId(id);
     eventOut.push(e);
-    callOutThread = true;
+    outCondition.notify_all();
 }
 
 /**
@@ -129,8 +128,9 @@ void standardInputModule::sendOut(std::shared_ptr<eventMessage> e) {
  */
 void standardInputModule::sendEvents() {
     while (!endThread) {
-        if (callOutThread) {
-            std::lock_guard<std::mutex> lock(outsMutex);
+        {   //you shall not erase braces
+            std::unique_lock<std::mutex> lock(outsMutex);
+            outCondition.wait_for(lock, std::chrono::milliseconds(100));
             while (!eventOut.empty()) {
                 if (eventOut.front()->getType() == eventType::NOTICE) {
                     eventMessageNotice * e2 = dynamic_cast<eventMessageNotice*> (eventOut.front().get());
@@ -144,8 +144,7 @@ void standardInputModule::sendEvents() {
                 coreptr->sendOut(eventOut.front());
                 eventOut.pop();
             }
-            callOutThread = false;
-        } else std::this_thread::sleep_for(std::chrono::milliseconds(10));
+        } // braces unlocking outsMutex for loading
         loadDevices();
     }
 }

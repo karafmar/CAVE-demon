@@ -14,12 +14,11 @@
 #include "module.h"
 #include <mutex>
 #include <queue>
+#include <condition_variable>
 
 struct State {
     bool endProgram = false;
     bool theEnd = false;
-    bool callInThread = false;
-    bool callOutThread = false;
 };
 
 class core {
@@ -43,6 +42,8 @@ public:
     std::mutex outsMutex;
     std::mutex inModuleMutex;
     std::mutex outModuleMutex;
+    std::condition_variable outCondition;
+    std::condition_variable inCondition;
 
 private:
     std::map<std::string, std::shared_ptr<module>> ins;

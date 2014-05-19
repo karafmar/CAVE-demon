@@ -24,8 +24,6 @@ core::core() {
     outs = std::map<std::string, std::shared_ptr < module >> ();
     eventIn = std::queue<std::shared_ptr < eventMessage >> ();
     eventOut = std::queue<std::shared_ptr < eventMessage >> ();
-    state.endProgram = false;
-    state.theEnd = false;
     loadConfig();
 }
 
@@ -153,7 +151,7 @@ void core::refresh() {
 void core::sendIn(std::shared_ptr<eventMessage> e) {
     std::lock_guard<std::mutex> lock(insMutex);
     eventIn.push(e);
-    state.callInThread = true;
+    inCondition.notify_all();
 }
 
 /**
@@ -164,7 +162,7 @@ void core::sendIn(std::shared_ptr<eventMessage> e) {
 void core::sendOut(std::shared_ptr<eventMessage> e) {
     std::lock_guard<std::mutex> lock(outsMutex);
     eventOut.push(e);
-    state.callOutThread = true;
+    outCondition.notify_all();
 }
 
 /**
@@ -174,18 +172,16 @@ void core::sendOut(std::shared_ptr<eventMessage> e) {
  */
 void core::checkIns() {
     while (!state.theEnd) {
-        if (state.callInThread) {
-            std::lock_guard<std::mutex> lock(insMutex);
-            std::lock_guard<std::mutex> lock2(inModuleMutex);
-            while (!eventIn.empty()) {
-                for (const auto& pair : ins) {
-                    if (pair.second->getID() == eventIn.front()->getModuleId())
-                        pair.second->accept(eventIn.front());
-                }
-                eventIn.pop();
+        std::unique_lock<std::mutex> lock(insMutex);
+        inCondition.wait_for(lock, std::chrono::milliseconds(100));
+        std::lock_guard<std::mutex> lock2(inModuleMutex);
+        while (!eventIn.empty()) {
+            for (const auto& pair : ins) {
+                if (pair.second->getID() == eventIn.front()->getModuleId())
+                    pair.second->accept(eventIn.front());
             }
-            state.callInThread = false;
-        } else std::this_thread::sleep_for(std::chrono::milliseconds(100));
+            eventIn.pop();
+        }
     }
 }
 
@@ -196,17 +192,15 @@ void core::checkIns() {
  */
 void core::checkOuts() {
     while (!state.theEnd) {
-        if (state.callOutThread) {
-            std::lock_guard<std::mutex> lock(outsMutex);
-            std::lock_guard<std::mutex> lock2(outModuleMutex);
-            while (!eventOut.empty()) {
-                for (const auto& pair : outs) {
-                    pair.second->accept(eventOut.front());
-                }
-                eventOut.pop();
+        std::unique_lock<std::mutex> lock(outsMutex);
+        outCondition.wait_for(lock, std::chrono::milliseconds(100));
+        std::lock_guard<std::mutex> lock2(outModuleMutex);
+        while (!eventOut.empty()) {
+            for (const auto& pair : outs) {
+                pair.second->accept(eventOut.front());
             }
-            state.callOutThread = false;
-        } else std::this_thread::sleep_for(std::chrono::milliseconds(100));
+            eventOut.pop();
+        }
     }
 }
 

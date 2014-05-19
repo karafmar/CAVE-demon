@@ -23,7 +23,6 @@ trackdModule::~trackdModule() {
 
 trackdModule::trackdModule(std::shared_ptr<std::map<std::string, std::string>> map) {
     id = map->at("id");
-    callThread = false;
     write = false;
     endWork = false;
     events = std::queue<std::shared_ptr < eventMessage >> ();
@@ -65,53 +64,51 @@ void trackdModule::applyEvents() {
     try {
         trackd::TrackdControlShmBlock control_block(trackd::control_key, true);
         while (!endWork) {
-            if (callThread == true) {
-                std::lock_guard<std::mutex> lock(eventMutex);
-                while (!events.empty()) {
-                    if (events.front()->getType() == eventType::NOTICE) {
-                        eventMessageNotice * e = dynamic_cast<eventMessageNotice*> (events.front().get());
-                        if (e->getdata() == "BYE") {
-                            button.clear();
-                            axis.clear();
-                            write = true;
-                        }
-                    } else if (events.front()->getType() == eventType::NEW_DEVICE) {
-                        eventMessageNewDevice * e = dynamic_cast<eventMessageNewDevice*> (events.front().get());
-                        std::vector<std::shared_ptr < ic>> inputs = e->getInput();
-                        std::for_each(inputs.begin(), inputs.end(), [&](std::shared_ptr < ic> i) {
-                            if (i->getType() == inputType::BUTTON) {
-                                button.insert(std::make_pair(i->getCode(), 0));
-                            }
-                            if (i->getType() == inputType::REL_AXIS)
-                                axis.insert(std::make_pair(i->getCode(), 0));
-
-                            if (i->getType() == inputType::ABS_AXIS) {
-                                icAbsAxis * iabs = dynamic_cast<icAbsAxis*> (i.get());                                                                
-                                axis.insert(std::make_pair(iabs->getCode(), (iabs->getMax()-iabs->getMin())*0.5f));
-                            }
-                        });
-
+            std::unique_lock<std::mutex> lock(eventMutex);
+            inCondition.wait_for(lock, std::chrono::milliseconds(100));
+            while (!events.empty()) {
+                if (events.front()->getType() == eventType::NOTICE) {
+                    eventMessageNotice * e = dynamic_cast<eventMessageNotice*> (events.front().get());
+                    if (e->getdata() == "BYE") {
+                        button.clear();
+                        axis.clear();
                         write = true;
-                    } else if (events.front()->getType() == eventType::DATA_UPDATE) {
-                        eventMessageDataUpdate * e = dynamic_cast<eventMessageDataUpdate*> (events.front().get());
-                        if (e->getInputType() == inputType::BUTTON) {
-                            std::lock_guard<std::mutex> lock(buttonMutex);
-                            if (button.find(e->getInputCode()) != button.end())
-                                button.at(e->getInputCode()) = e->getNewValue();
-                            write = true;
-                        }
-                        if ((e->getInputType() == inputType::ABS_AXIS) || (e->getInputType() == inputType::REL_AXIS)) {
-                            std::lock_guard<std::mutex> lock(axisMutex);
-                            if (axis.find(e->getInputCode()) != axis.end())
-                                axis.at(e->getInputCode()) = e->getNewValue();
-                            write = true;
-                        }
                     }
-                    events.pop();
+                } else if (events.front()->getType() == eventType::NEW_DEVICE) {
+                    eventMessageNewDevice * e = dynamic_cast<eventMessageNewDevice*> (events.front().get());
+                    std::vector<std::shared_ptr < ic>> inputs = e->getInput();
+                    std::for_each(inputs.begin(), inputs.end(), [&](std::shared_ptr < ic> i) {
+                        if (i->getType() == inputType::BUTTON) {
+                            button.insert(std::make_pair(i->getCode(), 0));
+                        }
+                        if (i->getType() == inputType::REL_AXIS)
+                            axis.insert(std::make_pair(i->getCode(), 0));
+
+                        if (i->getType() == inputType::ABS_AXIS) {
+                            icAbsAxis * iabs = dynamic_cast<icAbsAxis*> (i.get());
+                            axis.insert(std::make_pair(iabs->getCode(), (iabs->getMax() - iabs->getMin())*0.5f));
+                        }
+                    });
+
+                    write = true;
+                } else if (events.front()->getType() == eventType::DATA_UPDATE) {
+                    eventMessageDataUpdate * e = dynamic_cast<eventMessageDataUpdate*> (events.front().get());
+                    if (e->getInputType() == inputType::BUTTON) {
+                        std::lock_guard<std::mutex> lock(buttonMutex);
+                        if (button.find(e->getInputCode()) != button.end())
+                            button.at(e->getInputCode()) = e->getNewValue();
+                        write = true;
+                    }
+                    if ((e->getInputType() == inputType::ABS_AXIS) || (e->getInputType() == inputType::REL_AXIS)) {
+                        std::lock_guard<std::mutex> lock(axisMutex);
+                        if (axis.find(e->getInputCode()) != axis.end())
+                            axis.at(e->getInputCode()) = e->getNewValue();
+                        write = true;
+                    }
                 }
-                if (write == true) writeToSHM(&control_block);
-                callThread = false;
-            } else std::this_thread::sleep_for(std::chrono::milliseconds(10));
+                events.pop();
+            }
+            if (write == true) writeToSHM(&control_block);
         }
     } catch (std::exception& e) {
         std::clog << "Error while loading SHM block: " << e.what() << "\n";
@@ -121,7 +118,6 @@ void trackdModule::applyEvents() {
 
 void trackdModule::writeToSHM(trackd::TrackdControlShmBlock *control_block) {
     try {
-        std::cout << "I should be writing\n";
         int i = 0;
         if (button.size() > 31) control_block->set_button_count(32);
         else control_block->set_button_count(button.size());
@@ -150,6 +146,6 @@ void trackdModule::writeToSHM(trackd::TrackdControlShmBlock *control_block) {
 void trackdModule::accept(std::shared_ptr<eventMessage> e) {
     std::lock_guard<std::mutex> lock(eventMutex);
     events.push(e);
-    callThread = true;
+    inCondition.notify_all();
     std::cout << id << " in " << std::time(NULL) << ":::" << e;
 }

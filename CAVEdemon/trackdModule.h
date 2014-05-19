@@ -14,6 +14,7 @@
 #include <chrono>   //time for sleep
 #include <mutex>
 #include <queue>
+#include <condition_variable>
 
 /**
  * Class for output module compatible with trackd.
@@ -32,7 +33,6 @@ public:
         return id;
     }
 private:
-    bool callThread;
     bool endWork;
     bool write;
     void applyEvents();
@@ -42,6 +42,7 @@ private:
     std::mutex eventMutex;
     std::mutex buttonMutex;
     std::mutex axisMutex;
+    std::condition_variable inCondition;
     std::map<int, int> button;
     std::map<int, float> axis;
     void writeToSHM(trackd::TrackdControlShmBlock *control_block) ;

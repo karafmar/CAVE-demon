@@ -1,18 +1,8 @@
 <?xml version="1.0" standalone=no>
 <!-- comment -->
 <root>
-	<outs>
-            <module>
-                <id>sout1</id>
-                <class>simplemodule</class>
-                <other>something</other>
-            </module>
+        <outs>
 
-            <module>
-                <id>mockout4</id>
-                <class>mockoutmodule</class>
-                <other>something</other>
-            </module>
             <module>
                            <id>trackd</id>
                            <class>trackdmodule</class>
@@ -25,12 +15,8 @@
             <module>
                 <id>standard</id>
                 <class>standardinputmodule</class>
-                <devicepath>/dev/input/event19;/dev/input/event3;</devicepath>
+                <devicepath>/dev/input/event19;/dev/input/event18;</devicepath>
             </module>
-            <module>
-                <id>mockin1</id>
-                <class>mockinmodule</class>
-                <other>something</other>
-            </module>
+
         </ins>
 </root>

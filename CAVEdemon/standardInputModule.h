@@ -15,6 +15,7 @@
 #include <mutex>
 #include <chrono>   //time for sleep
 #include <thread>
+#include <condition_variable>
 
 /**
  * Standard module for devices. 
@@ -27,23 +28,26 @@ public:
     int bye();
     void refresh(std::shared_ptr<std::map<std::string, std::string>> map);
     void accept(std::shared_ptr<eventMessage> e);
-    std::string getID(){return id;}   
+
+    std::string getID() {
+        return id;
+    }
     void sendOut(std::shared_ptr<eventMessage> e);
-    private: 
-        std::string id;
-        std::map<std::string, std::shared_ptr < device >> devs;
-        std::vector<std::string> paths;
-        std::queue<std::shared_ptr<eventMessage>> eventOut;
-        std::mutex pathsMutex;
-        std::mutex outsMutex;
-        std::mutex devsMutex;
-        bool callOutThread =false;
-        std::thread t;   
-        bool endThread= false;
-        void sendEvents();  
-        void makePaths(std::string s, int offset);
-        void loadDevices();
-    
+private:
+    std::string id;
+    std::map<std::string, std::shared_ptr < device >> devs;
+    std::vector<std::string> paths;
+    std::queue<std::shared_ptr<eventMessage>> eventOut;
+    std::mutex pathsMutex;
+    std::mutex outsMutex;
+    std::mutex devsMutex;
+    std::condition_variable outCondition;
+    std::thread t;
+    bool endThread = false;
+    void sendEvents();
+    void makePaths(std::string s, int offset);
+    void loadDevices();
+
 };
 
 #endif	/* STANDARDINPUTMODULE_H */
