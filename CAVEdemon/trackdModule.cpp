@@ -1,9 +1,10 @@
-/* 
- * File:   trackdModule.cpp
- * Author: marketa
- * 
- * Created on 11. květen 2014, 20:00
+/*!@file    trackdModule.cpp
+ * @author: Marketa Karaffova <karafmar@cvut.cz>
+ * @date 22. 4. 2014	
+ * @copyright	 Marketa Karaffova 2014
+ * 	Distributed under MIT Licence, details in file doc/licence.txt
  */
+
 
 #include <utility>  //make_pair
 #include <algorithm>    //foreach

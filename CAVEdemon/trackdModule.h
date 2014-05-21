@@ -2,8 +2,8 @@
  * @file   mtrackdModule.h
  * @author: Marketa Karaffova <karafmar@cvut.cz>
  * @date 11. 5. 2014	
- * @copyright	Institute of Intermedia, CTU in Prague, 2013
- * 				Distributed under BSD Licence, details in file doc/LICENSE
+ * @copyright	 Marketa Karaffova 2014
+ * 	Distributed under MIT Licence, details in file doc/licence.txt
  */
 #ifndef TRACKDMODULE_H
 #define	TRACKDMODULE_H
